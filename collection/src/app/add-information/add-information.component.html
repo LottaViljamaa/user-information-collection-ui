@@ -16,6 +16,15 @@
           <small *ngIf="informationForm.get('lastName')?.errors?.['pattern']">Sukunimi voi sisältää vain kirjaimia ja väli-viivan.</small>
         </div>
     </div>
+
+    <div>
+        <label for="personallIdentityCode">Henkilötunnus:</label>
+        <input id="personallIdentityCode" formControlName="personallIdentityCode" type="text" />
+        <div *ngIf="informationForm.get('personallIdentityCode')?.invalid && (informationForm.get('personallIdentityCode')?.dirty || informationForm.get('personallIdentityCode')?.touched)">
+          <small *ngIf="informationForm.get('personallIdentityCode')?.errors?.['required']">Henkilötunnus on pakollinen.</small>
+          <small *ngIf="informationForm.get('personallIdentityCode')?.errors?.['pattern']">Henkilötunnus täytyy olla muodossa: 000000-0000.</small>
+        </div>
+      </div>
   
     <button type="submit" [disabled]="informationForm.invalid">Lähetä</button>
   </form>
