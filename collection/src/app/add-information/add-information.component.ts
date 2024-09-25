@@ -14,7 +14,6 @@ export class AddInformationComponent implements OnInit {
   informationForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
-    // Lomake, jossa vain yksi kenttä
     this.informationForm = this.fb.group({
       firstName: ['', [Validators.required, Validators.pattern('^[a-zA-Z-]+$')]],
       lastName: ['', [Validators.required, Validators.pattern('^[a-zA-Z-]+$')]],
@@ -34,6 +33,7 @@ export class AddInformationComponent implements OnInit {
 
   onSubmit(): void {
     if (this.informationForm.valid) {
+      alert("Tiedot lähetetty onnistuneesti.");
       console.log('Form Submitted', this.informationForm.value);
     }
   }
