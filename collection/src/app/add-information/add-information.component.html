@@ -32,7 +32,19 @@
         <div *ngIf="informationForm.get('citizenship')?.invalid && (informationForm.get('citizenship')?.dirty || informationForm.get('citizenship')?.touched)">
           <small *ngIf="informationForm.get('citizenship')?.errors?.['required']">Kansalaisuus on pakollinen.</small>
           <small *ngIf="informationForm.get('citizenship')?.errors?.['pattern']">Kansalaisuus voi sisältää vain kirjaimia.</small>
+        </div>
+      </div>
 
+      <div>
+        <label for="gender">Sukupuoli:</label>
+        <select id="gender" formControlName="gender">
+          <option value="" disabled selected>Valitse sukupuoli</option>
+          <option value="nainen">Nainen</option>
+          <option value="mies">Mies</option>
+          <option value="muu">Muu</option>
+        </select>
+        <div *ngIf="informationForm.get('gender')?.invalid && (informationForm.get('gender')?.dirty || informationForm.get('gender')?.touched)">
+          <small *ngIf="informationForm.get('gender')?.errors?.['required']">Sukupuoli on pakollinen.</small>
         </div>
       </div>
   
