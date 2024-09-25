@@ -1,1 +1,41 @@
-<p>Näytä henkilön tiedot</p>
+<div class="personInformationForm">
+    <h2>Syötä sen henkilön henkilötunnus, jonka tietoja haluat tarkastella.</h2>
+
+    <label for="personalIdentityCode">Henkilötunnus:</label>
+    <input id="personalIdentityCode" [(ngModel)]="personalIdentityCode" type="text" />
+    <button (click)="onSearch()">Lähetä</button>
+    <small *ngIf="errorMessage" class="error-message">{{ errorMessage }}</small>
+    
+    <div *ngIf="user">
+      <table>
+        <thead>
+          <tr>
+            <th>Etunimi</th>
+            <th>Sukunimi</th>
+            <th>Henkilötunnus</th>
+            <th>Kansalaisuus</th>
+            <th>Sukupuoli</th>
+            <th>Sähköposti</th>
+            <th>Puhelinnumero</th>
+            <th>Katuosoite</th>
+            <th>Kaupunki</th>
+            <th>Postinumero</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+              <td>{{ user.basicInformation.firstName }}</td>
+              <td>{{ user.basicInformation.surname }}</td>
+              <td>{{ user.basicInformation.personalIdentityCode }}</td>
+              <td>{{ user.basicInformation.citizenship }}</td>
+              <td>{{ user.basicInformation.gender }}</td>
+              <td>{{ user.contactInformation.email }}</td>
+              <td>{{ user.contactInformation.phoneNumber }}</td>
+              <td>{{ user.contactInformation.streetAddress }}</td>
+              <td>{{ user.contactInformation.city }}</td>
+              <td>{{ user.contactInformation.postalCode }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>    
+</div>
