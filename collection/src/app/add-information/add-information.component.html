@@ -47,7 +47,15 @@
           <small *ngIf="informationForm.get('gender')?.errors?.['required']">Sukupuoli on pakollinen.</small>
         </div>
       </div>
-  
+
+      <div>
+        <label for="email">Sähköposti:</label>
+        <input id="email" formControlName="email" type="email" />
+        <div *ngIf="informationForm.get('email')?.invalid && (informationForm.get('email')?.dirty || informationForm.get('email')?.touched)">
+          <small *ngIf="informationForm.get('email')?.errors?.['required']">Sähköposti on pakollinen.</small>
+          <small *ngIf="informationForm.get('email')?.errors?.['email']">Syötä kelvollinen sähköpostiosoite.</small>
+        </div>
+      </div>  
   
     <button type="submit" [disabled]="informationForm.invalid">Lähetä</button>
   </form>
