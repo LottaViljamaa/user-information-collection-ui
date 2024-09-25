@@ -4,9 +4,18 @@
         <input id="firstName" formControlName="firstName" type="text" />
         <div *ngIf="informationForm.get('firstName')?.invalid && (informationForm.get('firstName')?.dirty || informationForm.get('firstName')?.touched)">
           <small *ngIf="informationForm.get('firstName')?.errors?.['required']">Etunimi on pakollinen.</small>
-          <small *ngIf="informationForm.get('firstName')?.errors?.['pattern']">Etunimi voi sisältää vain kirjaimia ja viivoja.</small>
+          <small *ngIf="informationForm.get('firstName')?.errors?.['pattern']">Etunimi voi sisältää vain kirjaimia ja väli-viivan.</small>
         </div>
-      </div>
+    </div>
+
+    <div>
+        <label for="lastName">Sukunimi:</label>
+        <input id="lastName" formControlName="lastName" type="text" />
+        <div *ngIf="informationForm.get('lastName')?.invalid && (informationForm.get('lastName')?.dirty || informationForm.get('lastName')?.touched)">
+          <small *ngIf="informationForm.get('lastName')?.errors?.['required']">Sukunimi on pakollinen.</small>
+          <small *ngIf="informationForm.get('lastName')?.errors?.['pattern']">Sukunimi voi sisältää vain kirjaimia ja väli-viivan.</small>
+        </div>
+    </div>
   
     <button type="submit" [disabled]="informationForm.invalid">Lähetä</button>
   </form>
