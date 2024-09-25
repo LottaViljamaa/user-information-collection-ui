@@ -1,1 +1,40 @@
-<p>Näytä henkilötiedot</p>
+<div *ngIf="users.length > 0; else noData">
+    <h2>Kaikkien henkilöiden tiedot: </h2>
+    <p>Henkilötietoja yhteensä: {{ users.length }} kpl.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Etunimi</th>
+          <th>Sukunimi</th>
+          <th>Henkilötunnus</th>
+          <th>Kansalaisuus</th>
+          <th>Sukupuoli</th>
+          <th>Sähköposti</th>
+          <th>Puhelinnumero</th>
+          <th>Katuosoite</th>
+          <th>Kaupunki</th>
+          <th>Postinumero</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+            <td>{{ user.basicInformation?.firstName }}</td>
+            <td>{{ user.basicInformation?.surname }}</td>
+            <td>{{ user.basicInformation?.personalIdentityCode }}</td>
+            <td>{{ user.basicInformation?.citizenship }}</td>
+            <td>{{ user.basicInformation?.gender }}</td>
+            <td>{{ user.contactInformation?.email }}</td>
+            <td>{{ user.contactInformation?.phoneNumber }}</td>
+            <td>{{ user.contactInformation?.streetAddress }}</td>
+            <td>{{ user.contactInformation?.city }}</td>
+            <td>{{ user.contactInformation?.postalCode }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- Jos ei käyttäjiä, näytetään tämä -->
+  <ng-template #noData>
+    <p>Ei käyttäjätietoja saatavilla.</p>
+  </ng-template>
+  
