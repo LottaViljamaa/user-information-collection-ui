@@ -16,7 +16,7 @@ export class AddInformationComponent implements OnInit {
   constructor(private fb: FormBuilder) {
     // Lomake, jossa vain yksi kenttä
     this.informationForm = this.fb.group({
-      firstName: ['', Validators.required]
+      firstName: ['', [Validators.required, Validators.pattern('^[a-zA-Z-]+$')]]
     });
   }
 
