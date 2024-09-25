@@ -1,1 +1,11 @@
-<p>Lisää henkilötietoja</p>
+<form [formGroup]="informationForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="firstName">Etunimi:</label>
+      <input id="firstName" formControlName="firstName" type="text" />
+      <div *ngIf="informationForm.get('firstName')?.invalid && (informationForm.get('firstName')?.dirty || informationForm.get('firstName')?.touched)">
+        <small *ngIf="informationForm.get('firstName')?.errors?.['required']">Etunimi on pakollinen.</small>
+      </div>
+    </div>
+  
+    <button type="submit" [disabled]="informationForm.invalid">Lähetä</button>
+  </form>
