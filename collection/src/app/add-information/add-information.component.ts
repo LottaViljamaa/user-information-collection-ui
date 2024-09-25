@@ -21,7 +21,9 @@ export class AddInformationComponent implements OnInit {
       personallIdentityCode: ['', [Validators.required, Validators.pattern('^\\d{6}-\\d{4}$')]],
       citizenship: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
       gender: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]]
+      email: ['', [Validators.required, Validators.email]],
+      phoneNumber: ['', [Validators.required, Validators.pattern('^[+]?[0-9]*$'), Validators.maxLength(20)]],
+      streetAddress: ['', Validators.required]
     });
   }
 
