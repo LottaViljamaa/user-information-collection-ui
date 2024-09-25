@@ -23,7 +23,9 @@ export class AddInformationComponent implements OnInit {
       gender: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phoneNumber: ['', [Validators.required, Validators.pattern('^[+]?[0-9]*$'), Validators.maxLength(20)]],
-      streetAddress: ['', Validators.required]
+      streetAddress: ['', Validators.required],
+      city: ['', Validators.required],
+      postalCode: ['', [Validators.required, Validators.pattern('^\\d{5}$')]],
     });
   }
 

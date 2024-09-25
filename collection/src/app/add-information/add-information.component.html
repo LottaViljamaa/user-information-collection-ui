@@ -75,6 +75,22 @@
         </div>
       </div>
   
+      <div>
+        <label for="city">Kaupunki:</label>
+        <input id="city" formControlName="city" type="text" />
+        <div *ngIf="informationForm.get('city')?.invalid && (informationForm.get('city')?.dirty || informationForm.get('city')?.touched)">
+          <small *ngIf="informationForm.get('city')?.errors?.['required']">Kaupunki on pakollinen.</small>
+        </div>
+      </div>  
+
+      <div>
+        <label for="postalCode">Postinumero:</label>
+        <input id="postalCode" formControlName="postalCode" type="text" />
+        <div *ngIf="informationForm.get('postalCode')?.invalid && (informationForm.get('postalCode')?.dirty || informationForm.get('postalCode')?.touched)">
+          <small *ngIf="informationForm.get('postalCode')?.errors?.['required']">Postinumero on pakollinen.</small>
+          <small *ngIf="informationForm.get('postalCode')?.errors?.['pattern']">Postinumeron täytyy olla täsmälleen 5 numeroa.</small>
+        </div>
+      </div>
   
     <button type="submit" [disabled]="informationForm.invalid">Lähetä</button>
   </form>
