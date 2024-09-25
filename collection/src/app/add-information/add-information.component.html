@@ -25,6 +25,17 @@
           <small *ngIf="informationForm.get('personallIdentityCode')?.errors?.['pattern']">Henkilötunnus täytyy olla muodossa: 000000-0000.</small>
         </div>
       </div>
+
+      <div>
+        <label for="citizenship">Kansalaisuus:</label>
+        <input id="citizenship" formControlName="citizenship" type="text" />
+        <div *ngIf="informationForm.get('citizenship')?.invalid && (informationForm.get('citizenship')?.dirty || informationForm.get('citizenship')?.touched)">
+          <small *ngIf="informationForm.get('citizenship')?.errors?.['required']">Kansalaisuus on pakollinen.</small>
+          <small *ngIf="informationForm.get('citizenship')?.errors?.['pattern']">Kansalaisuus voi sisältää vain kirjaimia.</small>
+
+        </div>
+      </div>
+  
   
     <button type="submit" [disabled]="informationForm.invalid">Lähetä</button>
   </form>
