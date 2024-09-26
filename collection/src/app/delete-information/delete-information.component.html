@@ -1,1 +1,6 @@
-<p>Poista henkilötieto</p>
+<div class="personInformationForm">
+    <h2>Syötä sen henkilön henkilötunnus, jonka tiedot haluat poistaa.</h2>
+    <input id="personalIdentityCodeToDelete" [(ngModel)]="personalIdentityCodeToDelete" />
+    <button (click)="onDelete()">Poista</button>
+    <small *ngIf="message" class="message">{{ message }}</small>
+</div>
