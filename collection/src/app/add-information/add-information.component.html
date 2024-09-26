@@ -1,13 +1,12 @@
 <form [formGroup]="informationForm" (ngSubmit)="onSubmit()">
     <div>
-        <label for="firstName">Etunimi:</label>
-        <input id="firstName" formControlName="firstName" type="text" />
-        <div *ngIf="informationForm.get('firstName')?.invalid && (informationForm.get('firstName')?.dirty || informationForm.get('firstName')?.touched)">
-          <small *ngIf="informationForm.get('firstName')?.errors?.['required']">Etunimi on pakollinen.</small>
-          <small *ngIf="informationForm.get('firstName')?.errors?.['pattern']">Etunimi voi sisältää vain kirjaimia ja väli-viivan.</small>
-        </div>
+      <label for="firstName">Etunimi:</label>
+      <input id="firstName" formControlName="firstName" type="text" />
+      <div *ngIf="informationForm.get('firstName')?.invalid && (informationForm.get('firstName')?.dirty || informationForm.get('firstName')?.touched)">
+        <small *ngIf="informationForm.get('firstName')?.errors?.['required']">Etunimi on pakollinen.</small>
+        <small *ngIf="informationForm.get('firstName')?.errors?.['pattern']">Etunimi voi sisältää vain kirjaimia ja väli-viivan.</small>
+      </div>
     </div>
-
     <div>
         <label for="lastName">Sukunimi:</label>
         <input id="lastName" formControlName="lastName" type="text" />
@@ -18,11 +17,11 @@
     </div>
 
     <div>
-        <label for="personallIdentityCode">Henkilötunnus:</label>
-        <input id="personallIdentityCode" formControlName="personallIdentityCode" type="text" />
-        <div *ngIf="informationForm.get('personallIdentityCode')?.invalid && (informationForm.get('personallIdentityCode')?.dirty || informationForm.get('personallIdentityCode')?.touched)">
-          <small *ngIf="informationForm.get('personallIdentityCode')?.errors?.['required']">Henkilötunnus on pakollinen.</small>
-          <small *ngIf="informationForm.get('personallIdentityCode')?.errors?.['pattern']">Henkilötunnus täytyy olla muodossa: 000000-0000.</small>
+        <label for="personalIdentityCode">Henkilötunnus:</label>
+        <input id="personalIdentityCode" formControlName="personalIdentityCode" type="text" />
+        <div *ngIf="informationForm.get('personalIdentityCode')?.invalid && (informationForm.get('personalIdentityCode')?.dirty || informationForm.get('personalIdentityCode')?.touched)">
+          <small *ngIf="informationForm.get('personalIdentityCode')?.errors?.['required']">Henkilötunnus on pakollinen.</small>
+          <small *ngIf="informationForm.get('personalIdentityCode')?.errors?.['pattern']">Henkilötunnus täytyy olla muodossa: 000000-0000.</small>
         </div>
       </div>
 
