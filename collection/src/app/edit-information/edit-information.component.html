@@ -1,4 +1,5 @@
-<!-- Search form for personal identity code -->
+<h1>Muokkaa henkilön tietoja</h1>
+
 <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
     <label for="personalIdentityCode">Henkilötunnus:</label>
     <input id="personalIdentityCode" formControlName="personalIdentityCode" type="text"/>
@@ -6,7 +7,6 @@
     <div *ngIf="errorMessage">{{ errorMessage }}</div>
   </form>
   
-  <!-- Information form to edit if user data is found -->
   <form *ngIf="showForm" [formGroup]="informationForm" (ngSubmit)="onSubmit()">
     <label for="firstName">Etunimi:</label>
     <input id="firstName" formControlName="firstName" type="text"/>

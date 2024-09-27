@@ -1,5 +1,6 @@
+<h1>Kaikkien henkilöiden tiedot</h1>
+
 <div *ngIf="users.length > 0; else noData">
-    <h2>Kaikkien henkilöiden tiedot: </h2>
     <p>Henkilötietoja yhteensä: {{ users.length }} kpl.</p>
     <table>
       <thead>
@@ -33,7 +34,6 @@
     </table>
   </div>
   
-  <!-- Jos ei käyttäjiä, näytetään tämä -->
   <ng-template #noData>
     <p>Ei käyttäjätietoja saatavilla.</p>
   </ng-template>
