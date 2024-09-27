@@ -1,9 +1,8 @@
 <div class="content">
 
   <h1>Muokkaa henkilön tietoja</h1>
-
+  <h2>Syötä sen henkilön henkilötunnus, jonka tietoja haluat muokata.</h2>
   <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
-    <h2>Syötä sen henkilön henkilötunnus, jonka tietoja haluat muokata.</h2>
       <label for="personalIdentityCode">Henkilötunnus:</label>
       <input id="personalIdentityCode" formControlName="personalIdentityCode" type="text"/>
       <button type="submit">Hae tiedot</button>
