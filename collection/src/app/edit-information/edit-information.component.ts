@@ -56,7 +56,7 @@ export class EditInformationComponent {
     this.informationForm = this.fb.group({
       firstName: [this.user.basicInformation.firstName, [Validators.required, Validators.pattern('^[a-zA-Z-]+$')]],
       lastName: [this.user.basicInformation.surname, [Validators.required, Validators.pattern('^[a-zA-Z-]+$')]],
-      personalIdentityCode: [this.user.basicInformation.personalIdentityCode, [Validators.required, Validators.pattern('^\\d{6}-\\d{4}$')]],
+      personalIdentityCode: [{ value: this.user.basicInformation.personalIdentityCode, disabled: true }],
       citizenship: [this.user.basicInformation.citizenship, [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
       gender: [this.user.basicInformation.gender, Validators.required],
       email: [this.user.contactInformation.email, [Validators.required, Validators.email]],
@@ -70,7 +70,6 @@ export class EditInformationComponent {
     if (this.informationForm.valid) {
       const personalIdentityCode = this.informationForm.get('personalIdentityCode')?.value;
 
-      // Update URL with personalIdentityCode
       const updateUrl = `${this.apiUrlUpdate}/${personalIdentityCode}`;
 
       const userData = {
@@ -98,6 +97,7 @@ export class EditInformationComponent {
         }))
         .subscribe(() => {
           alert('Tietojen päivitys onnistui.');
+          this.showForm = false;
         });
     }
   }
