@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './add-information.component.html',
-  styleUrl: './add-information.component.css'
+  styleUrl: '../app.component.css'
 })
 export class AddInformationComponent implements OnInit {
   informationForm!: FormGroup; 

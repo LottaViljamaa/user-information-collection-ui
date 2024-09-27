@@ -1,53 +1,55 @@
-<h1>Muokkaa henkilön tietoja</h1>
+<div class="content">
 
-<form [formGroup]="searchForm" (ngSubmit)="onSearch()">
-    <label for="personalIdentityCode">Henkilötunnus:</label>
-    <input id="personalIdentityCode" formControlName="personalIdentityCode" type="text"/>
-    <button type="submit">Hae tiedot</button>
-    <div *ngIf="errorMessage">{{ errorMessage }}</div>
-  </form>
-  
-  <form *ngIf="showForm" [formGroup]="informationForm" (ngSubmit)="onSubmit()">
-    <label for="firstName">Etunimi:</label>
-    <input id="firstName" formControlName="firstName" type="text"/>
-  
-    <label for="lastName">Sukunimi:</label>
-    <input id="lastName" formControlName="lastName" type="text"/>
-  
-    <label for="personalIdentityCode">Henkilötunnus:</label>
-    <input id="personalIdentityCode" formControlName="personalIdentityCode" type="text" [ngClass]="{'error': informationForm.get('personalIdentityCode')?.hasError('alreadyExists')}"/>
-  
-    <label for="citizenship">Kansalaisuus:</label>
-    <input id="citizenship" formControlName="citizenship" type="text"/>
-  
-    <div>
-        <label for="gender">Sukupuoli:</label>
-        <select id="gender" formControlName="gender">
-          <option value="" disabled selected>Valitse sukupuoli</option>
-          <option value="nainen">Nainen</option>
-          <option value="mies">Mies</option>
-          <option value="muu">Muu</option>
-        </select>
-        <div *ngIf="informationForm.get('gender')?.invalid && (informationForm.get('gender')?.dirty || informationForm.get('gender')?.touched)">
-          <small *ngIf="informationForm.get('gender')?.errors?.['required']">Sukupuoli on pakollinen.</small>
+  <h1>Muokkaa henkilön tietoja</h1>
+
+  <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+      <label for="personalIdentityCode">Henkilötunnus:</label>
+      <input id="personalIdentityCode" formControlName="personalIdentityCode" type="text"/>
+      <button type="submit">Hae tiedot</button>
+      <div *ngIf="errorMessage">{{ errorMessage }}</div>
+    </form>
+    
+    <form *ngIf="showForm" [formGroup]="informationForm" (ngSubmit)="onSubmit()">
+      <label for="firstName">Etunimi:</label>
+      <input id="firstName" formControlName="firstName" type="text"/>
+    
+      <label for="lastName">Sukunimi:</label>
+      <input id="lastName" formControlName="lastName" type="text"/>
+    
+      <label for="personalIdentityCode">Henkilötunnus:</label>
+      <input id="personalIdentityCode" formControlName="personalIdentityCode" type="text" [ngClass]="{'error': informationForm.get('personalIdentityCode')?.hasError('alreadyExists')}"/>
+    
+      <label for="citizenship">Kansalaisuus:</label>
+      <input id="citizenship" formControlName="citizenship" type="text"/>
+    
+      <div>
+          <label for="gender">Sukupuoli:</label>
+          <select id="gender" formControlName="gender">
+            <option value="" disabled selected>Valitse sukupuoli</option>
+            <option value="nainen">Nainen</option>
+            <option value="mies">Mies</option>
+            <option value="muu">Muu</option>
+          </select>
+          <div *ngIf="informationForm.get('gender')?.invalid && (informationForm.get('gender')?.dirty || informationForm.get('gender')?.touched)">
+            <small *ngIf="informationForm.get('gender')?.errors?.['required']">Sukupuoli on pakollinen.</small>
+          </div>
         </div>
-      </div>
-  
-    <label for="email">Sähköposti:</label>
-    <input id="email" formControlName="email" type="email"/>
-  
-    <label for="phoneNumber">Puhelinnumero:</label>
-    <input id="phoneNumber" formControlName="phoneNumber" type="text"/>
-  
-    <label for="streetAddress">Katuosoite:</label>
-    <input id="streetAddress" formControlName="streetAddress" type="text"/>
-  
-    <label for="city">Kaupunki:</label>
-    <input id="city" formControlName="city" type="text"/>
-  
-    <label for="postalCode">Postinumero:</label>
-    <input id="postalCode" formControlName="postalCode" type="text"/>
-  
-    <button type="submit">Tallenna muutokset</button>
-  </form>
-  
+    
+      <label for="email">Sähköposti:</label>
+      <input id="email" formControlName="email" type="email"/>
+    
+      <label for="phoneNumber">Puhelinnumero:</label>
+      <input id="phoneNumber" formControlName="phoneNumber" type="text"/>
+    
+      <label for="streetAddress">Katuosoite:</label>
+      <input id="streetAddress" formControlName="streetAddress" type="text"/>
+    
+      <label for="city">Kaupunki:</label>
+      <input id="city" formControlName="city" type="text"/>
+    
+      <label for="postalCode">Postinumero:</label>
+      <input id="postalCode" formControlName="postalCode" type="text"/>
+    
+      <button type="submit">Tallenna muutokset</button>
+    </form>
+</div>

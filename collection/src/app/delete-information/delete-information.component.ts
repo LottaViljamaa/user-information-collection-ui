@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './delete-information.component.html',
-  styleUrl: './delete-information.component.css'
+  styleUrl: '../app.component.css'
 })
 export class DeleteInformationComponent {
 

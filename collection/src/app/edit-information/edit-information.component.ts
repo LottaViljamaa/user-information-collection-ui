@@ -9,7 +9,7 @@ import { catchError, of } from 'rxjs';
   standalone: true,
   imports: [FormsModule, CommonModule,ReactiveFormsModule],
   templateUrl: './edit-information.component.html',
-  styleUrl: './edit-information.component.css'
+  styleUrl: '../app.component.css'
 })
 export class EditInformationComponent {
   searchForm: FormGroup;

@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './show-information.component.html',
-  styleUrl: './show-information.component.css'
+  styleUrl: '../app.component.css'
 })
 export class ShowInformationComponent {
 personalIdentityCode: string = '';

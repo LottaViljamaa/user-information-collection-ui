@@ -1,97 +1,99 @@
-<h1>Lisää uusi henkilötieto</h1>
-<form [formGroup]="informationForm" (ngSubmit)="onSubmit()">
-    <div>
-      <label for="firstName">Etunimi:</label>
-      <input id="firstName" formControlName="firstName" type="text" />
-      <div *ngIf="informationForm.get('firstName')?.invalid && (informationForm.get('firstName')?.dirty || informationForm.get('firstName')?.touched)">
-        <small *ngIf="informationForm.get('firstName')?.errors?.['required']">Etunimi on pakollinen.</small>
-        <small *ngIf="informationForm.get('firstName')?.errors?.['pattern']">Etunimi voi sisältää vain kirjaimia ja väli-viivan.</small>
+<div class="content">
+  <h1>Lisää uusi henkilötieto</h1>
+  <form [formGroup]="informationForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="firstName">Etunimi:</label>
+        <input id="firstName" formControlName="firstName" type="text" />
+        <div *ngIf="informationForm.get('firstName')?.invalid && (informationForm.get('firstName')?.dirty || informationForm.get('firstName')?.touched)">
+          <small *ngIf="informationForm.get('firstName')?.errors?.['required']">Etunimi on pakollinen.</small>
+          <small *ngIf="informationForm.get('firstName')?.errors?.['pattern']">Etunimi voi sisältää vain kirjaimia ja väli-viivan.</small>
+        </div>
       </div>
-    </div>
-    <div>
-        <label for="lastName">Sukunimi:</label>
-        <input id="lastName" formControlName="lastName" type="text" />
-        <div *ngIf="informationForm.get('lastName')?.invalid && (informationForm.get('lastName')?.dirty || informationForm.get('lastName')?.touched)">
-          <small *ngIf="informationForm.get('lastName')?.errors?.['required']">Sukunimi on pakollinen.</small>
-          <small *ngIf="informationForm.get('lastName')?.errors?.['pattern']">Sukunimi voi sisältää vain kirjaimia ja väli-viivan.</small>
-        </div>
-    </div>
-
-    <div>
-        <label for="personalIdentityCode">Henkilötunnus:</label>
-        <input id="personalIdentityCode" formControlName="personalIdentityCode" type="text" />
-        <div *ngIf="informationForm.get('personalIdentityCode')?.invalid && (informationForm.get('personalIdentityCode')?.dirty || informationForm.get('personalIdentityCode')?.touched)">
-          <small *ngIf="informationForm.get('personalIdentityCode')?.errors?.['required']">Henkilötunnus on pakollinen.</small>
-          <small *ngIf="informationForm.get('personalIdentityCode')?.errors?.['pattern']">Henkilötunnus täytyy olla muodossa: 000000-0000.</small>
-        </div>
+      <div>
+          <label for="lastName">Sukunimi:</label>
+          <input id="lastName" formControlName="lastName" type="text" />
+          <div *ngIf="informationForm.get('lastName')?.invalid && (informationForm.get('lastName')?.dirty || informationForm.get('lastName')?.touched)">
+            <small *ngIf="informationForm.get('lastName')?.errors?.['required']">Sukunimi on pakollinen.</small>
+            <small *ngIf="informationForm.get('lastName')?.errors?.['pattern']">Sukunimi voi sisältää vain kirjaimia ja väli-viivan.</small>
+          </div>
       </div>
 
       <div>
-        <label for="citizenship">Kansalaisuus:</label>
-        <input id="citizenship" formControlName="citizenship" type="text" />
-        <div *ngIf="informationForm.get('citizenship')?.invalid && (informationForm.get('citizenship')?.dirty || informationForm.get('citizenship')?.touched)">
-          <small *ngIf="informationForm.get('citizenship')?.errors?.['required']">Kansalaisuus on pakollinen.</small>
-          <small *ngIf="informationForm.get('citizenship')?.errors?.['pattern']">Kansalaisuus voi sisältää vain kirjaimia.</small>
+          <label for="personalIdentityCode">Henkilötunnus:</label>
+          <input id="personalIdentityCode" formControlName="personalIdentityCode" type="text" />
+          <div *ngIf="informationForm.get('personalIdentityCode')?.invalid && (informationForm.get('personalIdentityCode')?.dirty || informationForm.get('personalIdentityCode')?.touched)">
+            <small *ngIf="informationForm.get('personalIdentityCode')?.errors?.['required']">Henkilötunnus on pakollinen.</small>
+            <small *ngIf="informationForm.get('personalIdentityCode')?.errors?.['pattern']">Henkilötunnus täytyy olla muodossa: 000000-0000.</small>
+          </div>
         </div>
-      </div>
 
-      <div>
-        <label for="gender">Sukupuoli:</label>
-        <select id="gender" formControlName="gender">
-          <option value="" disabled selected>Valitse sukupuoli</option>
-          <option value="nainen">Nainen</option>
-          <option value="mies">Mies</option>
-          <option value="muu">Muu</option>
-        </select>
-        <div *ngIf="informationForm.get('gender')?.invalid && (informationForm.get('gender')?.dirty || informationForm.get('gender')?.touched)">
-          <small *ngIf="informationForm.get('gender')?.errors?.['required']">Sukupuoli on pakollinen.</small>
+        <div>
+          <label for="citizenship">Kansalaisuus:</label>
+          <input id="citizenship" formControlName="citizenship" type="text" />
+          <div *ngIf="informationForm.get('citizenship')?.invalid && (informationForm.get('citizenship')?.dirty || informationForm.get('citizenship')?.touched)">
+            <small *ngIf="informationForm.get('citizenship')?.errors?.['required']">Kansalaisuus on pakollinen.</small>
+            <small *ngIf="informationForm.get('citizenship')?.errors?.['pattern']">Kansalaisuus voi sisältää vain kirjaimia.</small>
+          </div>
         </div>
-      </div>
 
-      <div>
-        <label for="email">Sähköposti:</label>
-        <input id="email" formControlName="email" type="email" />
-        <div *ngIf="informationForm.get('email')?.invalid && (informationForm.get('email')?.dirty || informationForm.get('email')?.touched)">
-          <small *ngIf="informationForm.get('email')?.errors?.['required']">Sähköposti on pakollinen.</small>
-          <small *ngIf="informationForm.get('email')?.errors?.['email']">Syötä kelvollinen sähköpostiosoite.</small>
+        <div>
+          <label for="gender">Sukupuoli:</label>
+          <select id="gender" formControlName="gender">
+            <option value="" disabled selected>Valitse sukupuoli</option>
+            <option value="nainen">Nainen</option>
+            <option value="mies">Mies</option>
+            <option value="muu">Muu</option>
+          </select>
+          <div *ngIf="informationForm.get('gender')?.invalid && (informationForm.get('gender')?.dirty || informationForm.get('gender')?.touched)">
+            <small *ngIf="informationForm.get('gender')?.errors?.['required']">Sukupuoli on pakollinen.</small>
+          </div>
         </div>
-      </div> 
-      
-      <div>
-        <label for="phoneNumber">Puhelinnumero:</label>
-        <input id="phoneNumber" formControlName="phoneNumber" type="text" />
-        <div *ngIf="informationForm.get('phoneNumber')?.invalid && (informationForm.get('phoneNumber')?.dirty || informationForm.get('phoneNumber')?.touched)">
-          <small *ngIf="informationForm.get('email')?.errors?.['required']">Sähköposti on pakollinen.</small>
-          <small *ngIf="informationForm.get('phoneNumber')?.errors?.['pattern']">Puhelinnumero voi sisältää vain numeroita ja mahdollisesti "+" merkin.</small>
-          <small *ngIf="informationForm.get('phoneNumber')?.errors?.['maxlength']">Puhelinnumero ei voi olla yli 20 merkkiä pitkä.</small>
-        </div>
-      </div>
 
-      <div>
-        <label for="streetAddress">Katuosoite:</label>
-        <input id="streetAddress" formControlName="streetAddress" type="text" />
-        <div *ngIf="informationForm.get('streetAddress')?.invalid && (informationForm.get('streetAddress')?.dirty || informationForm.get('streetAddress')?.touched)">
-          <small *ngIf="informationForm.get('streetAddress')?.errors?.['required']">Katuosoite on pakollinen.</small>
+        <div>
+          <label for="email">Sähköposti:</label>
+          <input id="email" formControlName="email" type="email" />
+          <div *ngIf="informationForm.get('email')?.invalid && (informationForm.get('email')?.dirty || informationForm.get('email')?.touched)">
+            <small *ngIf="informationForm.get('email')?.errors?.['required']">Sähköposti on pakollinen.</small>
+            <small *ngIf="informationForm.get('email')?.errors?.['email']">Syötä kelvollinen sähköpostiosoite.</small>
+          </div>
+        </div> 
+        
+        <div>
+          <label for="phoneNumber">Puhelinnumero:</label>
+          <input id="phoneNumber" formControlName="phoneNumber" type="text" />
+          <div *ngIf="informationForm.get('phoneNumber')?.invalid && (informationForm.get('phoneNumber')?.dirty || informationForm.get('phoneNumber')?.touched)">
+            <small *ngIf="informationForm.get('email')?.errors?.['required']">Sähköposti on pakollinen.</small>
+            <small *ngIf="informationForm.get('phoneNumber')?.errors?.['pattern']">Puhelinnumero voi sisältää vain numeroita ja mahdollisesti "+" merkin.</small>
+            <small *ngIf="informationForm.get('phoneNumber')?.errors?.['maxlength']">Puhelinnumero ei voi olla yli 20 merkkiä pitkä.</small>
+          </div>
         </div>
-      </div>
-  
-      <div>
-        <label for="city">Kaupunki:</label>
-        <input id="city" formControlName="city" type="text" />
-        <div *ngIf="informationForm.get('city')?.invalid && (informationForm.get('city')?.dirty || informationForm.get('city')?.touched)">
-          <small *ngIf="informationForm.get('city')?.errors?.['required']">Kaupunki on pakollinen.</small>
-        </div>
-      </div>  
 
-      <div>
-        <label for="postalCode">Postinumero:</label>
-        <input id="postalCode" formControlName="postalCode" type="text" />
-        <div *ngIf="informationForm.get('postalCode')?.invalid && (informationForm.get('postalCode')?.dirty || informationForm.get('postalCode')?.touched)">
-          <small *ngIf="informationForm.get('postalCode')?.errors?.['required']">Postinumero on pakollinen.</small>
-          <small *ngIf="informationForm.get('postalCode')?.errors?.['pattern']">Postinumeron täytyy olla täsmälleen 5 numeroa.</small>
+        <div>
+          <label for="streetAddress">Katuosoite:</label>
+          <input id="streetAddress" formControlName="streetAddress" type="text" />
+          <div *ngIf="informationForm.get('streetAddress')?.invalid && (informationForm.get('streetAddress')?.dirty || informationForm.get('streetAddress')?.touched)">
+            <small *ngIf="informationForm.get('streetAddress')?.errors?.['required']">Katuosoite on pakollinen.</small>
+          </div>
         </div>
-      </div>
-  
-    <button type="submit" [disabled]="informationForm.invalid">Lähetä</button>
-    <small *ngIf="message" class="message">{{ message }}</small>
-  </form>
+    
+        <div>
+          <label for="city">Kaupunki:</label>
+          <input id="city" formControlName="city" type="text" />
+          <div *ngIf="informationForm.get('city')?.invalid && (informationForm.get('city')?.dirty || informationForm.get('city')?.touched)">
+            <small *ngIf="informationForm.get('city')?.errors?.['required']">Kaupunki on pakollinen.</small>
+          </div>
+        </div>  
+
+        <div>
+          <label for="postalCode">Postinumero:</label>
+          <input id="postalCode" formControlName="postalCode" type="text" />
+          <div *ngIf="informationForm.get('postalCode')?.invalid && (informationForm.get('postalCode')?.dirty || informationForm.get('postalCode')?.touched)">
+            <small *ngIf="informationForm.get('postalCode')?.errors?.['required']">Postinumero on pakollinen.</small>
+            <small *ngIf="informationForm.get('postalCode')?.errors?.['pattern']">Postinumeron täytyy olla täsmälleen 5 numeroa.</small>
+          </div>
+        </div>
+    
+      <button type="submit" [disabled]="informationForm.invalid">Lähetä</button>
+      <small *ngIf="message" class="message">{{ message }}</small>
+    </form>
+</div>

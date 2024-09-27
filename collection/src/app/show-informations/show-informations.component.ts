@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './show-informations.component.html',
-  styleUrl: './show-informations.component.css'
+  styleUrl: '../app.component.css'
 })
 export class ShowInformationsComponent implements OnInit {
   users: any[] = [];
