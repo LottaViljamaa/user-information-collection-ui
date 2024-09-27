@@ -62,7 +62,7 @@
           <label for="phoneNumber">Puhelinnumero:</label>
           <input id="phoneNumber" formControlName="phoneNumber" type="text" />
           <div *ngIf="informationForm.get('phoneNumber')?.invalid && (informationForm.get('phoneNumber')?.dirty || informationForm.get('phoneNumber')?.touched)">
-            <small *ngIf="informationForm.get('email')?.errors?.['required']">Sähköposti on pakollinen.</small>
+            <small *ngIf="informationForm.get('phoneNumber')?.errors?.['required']">Puhelinnumero on pakollinen.</small>
             <small *ngIf="informationForm.get('phoneNumber')?.errors?.['pattern']">Puhelinnumero voi sisältää vain numeroita ja mahdollisesti "+" merkin.</small>
             <small *ngIf="informationForm.get('phoneNumber')?.errors?.['maxlength']">Puhelinnumero ei voi olla yli 20 merkkiä pitkä.</small>
           </div>
