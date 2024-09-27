@@ -16,6 +16,8 @@ export class AddInformationComponent implements OnInit {
   informationForm!: FormGroup; 
 
   private apiUrl = 'http://localhost:8090/users/add';
+  private apiUrlGet = 'http://localhost:8090/users/get';
+  message: string = '';
 
   constructor(private fb: FormBuilder, private http: HttpClient) {}
 
@@ -36,31 +38,50 @@ export class AddInformationComponent implements OnInit {
 
   onSubmit(): void {
     if (this.informationForm.valid) {
-      const basicInformation = {
-        firstName: this.informationForm.get('firstName')?.value,
-        surname: this.informationForm.get('lastName')?.value,
-        personalIdentityCode: this.informationForm.get('personalIdentityCode')?.value,
-        citizenship: this.informationForm.get('citizenship')?.value,
-        gender: this.informationForm.get('gender')?.value
-      };
+      const personalIdentityCode = this.informationForm.get('personalIdentityCode')?.value;
 
-      const contactInformation = {
-        personalIdentityCode: this.informationForm.get('personalIdentityCode')?.value,
-        email: this.informationForm.get('email')?.value,
-        phoneNumber: this.informationForm.get('phoneNumber')?.value,
-        streetAddress: this.informationForm.get('streetAddress')?.value,
-        city: this.informationForm.get('city')?.value,
-        postalCode: this.informationForm.get('postalCode')?.value
-      };
+      this.http.get(`${this.apiUrlGet}/${personalIdentityCode}`).pipe(
+        catchError(err => {
+          if (err.status === 404) {
+            return of(null);
+          } else {
+            throw err;
+          }
+        })
+      ).subscribe((existingData: any) => {
+        if (existingData) {
+          this.message = 'Tietojen lisäys epäonnistui: annettu henkilötunnus on jo käytössä. '
+        } else {
+          const basicInformation = {
+            firstName: this.informationForm.get('firstName')?.value,
+            surname: this.informationForm.get('lastName')?.value,
+            personalIdentityCode: this.informationForm.get('personalIdentityCode')?.value,
+            citizenship: this.informationForm.get('citizenship')?.value,
+            gender: this.informationForm.get('gender')?.value
+          };
 
-      const userData = {
-        basicInformation: basicInformation,
-        contactInformation: contactInformation
-      };
+          const contactInformation = {
+            personalIdentityCode: this.informationForm.get('personalIdentityCode')?.value,
+            email: this.informationForm.get('email')?.value,
+            phoneNumber: this.informationForm.get('phoneNumber')?.value,
+            streetAddress: this.informationForm.get('streetAddress')?.value,
+            city: this.informationForm.get('city')?.value,
+            postalCode: this.informationForm.get('postalCode')?.value
+          };
 
-      this.http.put(this.apiUrl, userData)
-      .subscribe(() => {
-        console.log('Tietojen lähetys onnistui.');
+          const userData = {
+            basicInformation: basicInformation,
+            contactInformation: contactInformation
+          };
+
+          this.http.put(this.apiUrl, userData)
+            .pipe( catchError(err => {
+              return of(null)
+            }))
+            .subscribe(() => {
+              alert('Tietojen lähetys onnistui.');
+            });
+        }
       });
     }
   }

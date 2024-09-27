@@ -92,4 +92,5 @@
       </div>
   
     <button type="submit" [disabled]="informationForm.invalid">Lähetä</button>
+    <small *ngIf="message" class="message">{{ message }}</small>
   </form>
