@@ -52,8 +52,11 @@ export const t= {
         deleteSuccess: 'Henkilötiedot poistettu onnistuneesti henkilötunnuksella {id}.',
         editSuccess: 'Tietojen päivitys onnistui'
     },
+    cancelMessages: {
+        cancel: 'Tietojen poisto peruutettu.',
+    },
     confirmationMessage: {
-        delete: 'Haluatko varmasti poistaa henkilötiedot henkilötunnuksella: {id} ?'
+        delete: 'Haluatko varmasti poistaa henkilötiedot henkilötunnuksella: {id}?'
     },
     button: {
         send: 'Lähetä',
