@@ -3,6 +3,7 @@ import { RouterOutlet, RouterModule } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
+import { t } from './texts';
 
 @Component({
   selector: 'app-root',
@@ -12,5 +13,6 @@ import { HttpClientModule } from '@angular/common/http';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+  t = t;
   title = 'collection';
 }

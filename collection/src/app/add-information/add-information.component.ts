@@ -4,7 +4,7 @@ import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
+import {t} from '../texts.js'
 @Component({
   selector: 'app-add-information',
   standalone: true,
@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 })
 export class AddInformationComponent implements OnInit {
   informationForm!: FormGroup; 
+  t = t;
 
   private apiUrl = 'http://localhost:8090/users/add';
   private apiUrlGet = 'http://localhost:8090/users/get';
@@ -50,7 +51,7 @@ export class AddInformationComponent implements OnInit {
         })
       ).subscribe((existingData: any) => {
         if (existingData) {
-          this.message = 'Tietojen lisäys epäonnistui: annettu henkilötunnus on jo käytössä. '
+          this.message = `${t.errorMessages.sendError} ${t.errorMessages.personalIdentityCodeExists}`;
         } else {
           const basicInformation = {
             firstName: this.informationForm.get('firstName')?.value,
@@ -79,7 +80,7 @@ export class AddInformationComponent implements OnInit {
               return of(null)
             }))
             .subscribe(() => {
-              alert('Tietojen lähetys onnistui.');
+              alert(`${t.successMessages.success}`);
             });
         }
       });
