@@ -2,20 +2,20 @@
   <h1>Kaikkien henkilöiden tiedot</h1>
 
   <div *ngIf="users.length > 0; else noData">
-      <p>Henkilötietoja yhteensä: {{ users.length }} kpl.</p>
-      <table>
+    <p>{{ t.headers.additionalHeaders.totalUsers.replace('{amount}', users.length.toString())}}</p>
+    <table>
         <thead>
           <tr>
-            <th>Etunimi</th>
-            <th>Sukunimi</th>
-            <th>Henkilötunnus</th>
-            <th>Kansalaisuus</th>
-            <th>Sukupuoli</th>
-            <th>Sähköposti</th>
-            <th>Puhelinnumero</th>
-            <th>Katuosoite</th>
-            <th>Kaupunki</th>
-            <th>Postinumero</th>
+            <th>{{t.userInformation.firstName}}</th>
+              <th>{{t.userInformation.lastName}}</th>
+              <th>{{t.userInformation.personalIdentityCode}}</th>
+              <th>{{t.userInformation.citizenship}}</th>
+              <th>{{t.userInformation.gender}}</th>
+              <th>{{t.userInformation.email}}</th>
+              <th>{{t.userInformation.phoneNumber}}</th>
+              <th>{{t.userInformation.streetAddress}}</th>
+              <th>{{t.userInformation.city}}</th>
+              <th>{{t.userInformation.postalCode}}</th>
           </tr>
         </thead>
         <tbody>
@@ -36,7 +36,7 @@
     </div>
     
     <ng-template #noData>
-      <p>Ei käyttäjätietoja saatavilla.</p>
+      <p>{{t.errorMessages.noInformationFound}}</p>
     </ng-template>
 
 </div>

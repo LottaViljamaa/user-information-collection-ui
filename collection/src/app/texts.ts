@@ -12,6 +12,7 @@ export const t= {
             showInformation: 'Syötä sen henkilön henkilötunnus, jonka tietoja haluat tarkastella.',
             allInformation: 'Henkilötietoja yhteensä: ',
             chooseGender: 'Valitse sukupuoli',
+            totalUsers: 'Henkilötietoja yhteensä: {amount} kpl.'
         }
     },
     userInformation: {
@@ -33,6 +34,7 @@ export const t= {
         sendError: 'Tietojen lisäys epäonnistui:',
         deleteError: 'Tietojen poistamisessa tapahtui virhe',
         editErro: 'Tietojen päivitys epäonnistui.',
+        searchErro: 'Tietojen haussa tapahtui virhe',
         personalIdentityCodeExists: "annettu henkilötunnus on jo käytössä.",
         mandatory: ' tieto on pakollinen.',
         nameForm: ' syöte voi sisältää vain kirjaimia ja väliviivan.',
