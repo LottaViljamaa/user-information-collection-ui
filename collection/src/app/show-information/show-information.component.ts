@@ -4,6 +4,7 @@ import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import {t} from '../texts.js'
 
 
 @Component({
@@ -17,6 +18,7 @@ export class ShowInformationComponent {
 personalIdentityCode: string = '';
   user: any;
   errorMessage: string = '';
+  t=t;
 
   private apiUrl = 'http://localhost:8090/users/get';
 
@@ -30,7 +32,7 @@ personalIdentityCode: string = '';
       this.http.get(`${this.apiUrl}/${this.personalIdentityCode}`)
         .pipe(
           catchError(err => {
-            this.errorMessage = 'Annetulla henkilötunnuksella ei löydy tietoja.';
+            this.errorMessage = `${t.errorMessages.idNotFound}`;
             return of(null);
           })
         )
@@ -40,7 +42,7 @@ personalIdentityCode: string = '';
           }
         });
     } else {
-      this.errorMessage = 'Henkilötunnus on pakollinen.';
+      this.errorMessage = `${t.userInformation.personalIdentityCode} ${t.errorMessages.mandatory}`;
     }
   }
 }
