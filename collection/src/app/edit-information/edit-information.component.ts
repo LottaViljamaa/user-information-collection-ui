@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, Validators, ReactiveFormsModule, } from '@angular/forms';
 import { catchError, of } from 'rxjs';
+import {t} from '../texts.js'
 
 @Component({
   selector: 'app-edit-information',
@@ -17,6 +18,7 @@ export class EditInformationComponent {
   user: any;
   errorMessage: string = '';
   showForm: boolean = false;
+  t = t;
 
   private apiUrlGet = 'http://localhost:8090/users/get';
   private apiUrlUpdate = 'http://localhost:8090/users/update';
@@ -34,7 +36,7 @@ export class EditInformationComponent {
       this.http.get(`${this.apiUrlGet}/${personalIdentityCode}`).pipe(
         catchError(err => {
           if (err.status === 404) {
-            this.errorMessage = 'Annetulla henkilötunnuksella ei löydy tietoja.';
+            this.errorMessage = `${t.errorMessages.idNotFound}`;
             this.showForm = false;
             return of(null);
           } else {
@@ -92,11 +94,11 @@ export class EditInformationComponent {
 
       this.http.put(updateUrl, userData)
         .pipe(catchError(err => {
-          this.errorMessage = 'Tietojen päivitys epäonnistui.';
+          this.errorMessage = `${t.errorMessages.editErro}`;
           return of(null);
         }))
         .subscribe(() => {
-          alert('Tietojen päivitys onnistui.');
+          alert(`${t.successMessages.editSuccess}`);
           this.showForm = false;
         });
     }

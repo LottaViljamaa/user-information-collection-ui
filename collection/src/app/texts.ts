@@ -3,7 +3,7 @@ export const t= {
         mainHeader: 'Henkilötietosovellus',
         addInformation: 'Lisää uusi henkilötieto',
         deleteInformation: 'Poista henkilötieto',
-        editInformation: 'MUokkaa henkilön tietoja',
+        editInformation: 'Muokkaa henkilön tietoja',
         showInformation: 'Näytä henkilön tiedot',
         usersInformation: 'Kaikkien henkilöiden tiedot',
         additionalHeaders: {
@@ -56,7 +56,8 @@ export const t= {
     button: {
         send: 'Lähetä',
         save: 'Tallenna muutokset',
-        delete: 'Poista'
+        delete: 'Poista',
+        search: 'Hae tiedot'
     },
     navigation: {
         add: 'Lisää',
