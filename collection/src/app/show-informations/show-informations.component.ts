@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, of } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import {t} from '../texts.js'
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-show-informations',
@@ -14,17 +15,14 @@ import {t} from '../texts.js'
 export class ShowInformationsComponent implements OnInit {
   users: any[] = [];
   t=t;
-  private apiUrl = 'http://localhost:8090/users/all';
-
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     this.fetchUsers();
   }
 
-
   fetchUsers(): void {
-    this.http.get<any[]>(this.apiUrl)
+    this.http.get<any[]>(`${environment.baseUrl}/all`)
       .pipe(
         catchError(error => {
           alert(`${t.errorMessages.searchErro}`);

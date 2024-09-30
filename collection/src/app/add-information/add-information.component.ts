@@ -5,6 +5,8 @@ import { of } from 'rxjs';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import {t} from '../texts.js'
+import { environment } from '../../environments/environment';
+
 @Component({
   selector: 'app-add-information',
   standalone: true,
@@ -16,8 +18,6 @@ export class AddInformationComponent implements OnInit {
   informationForm!: FormGroup; 
   t = t;
 
-  private apiUrl = 'http://localhost:8090/users/add';
-  private apiUrlGet = 'http://localhost:8090/users/get';
   message: string = '';
 
   constructor(private fb: FormBuilder, private http: HttpClient) {}
@@ -41,7 +41,7 @@ export class AddInformationComponent implements OnInit {
     if (this.informationForm.valid) {
       const personalIdentityCode = this.informationForm.get('personalIdentityCode')?.value;
 
-      this.http.get(`${this.apiUrlGet}/${personalIdentityCode}`).pipe(
+      this.http.get(`${environment.baseUrl}/get/${personalIdentityCode}`).pipe(
         catchError(err => {
           if (err.status === 404) {
             return of(null);
@@ -75,7 +75,7 @@ export class AddInformationComponent implements OnInit {
             contactInformation: contactInformation
           };
 
-          this.http.put(this.apiUrl, userData)
+          this.http.put(`${environment.baseUrl}/add`, userData)
             .pipe( catchError(err => {
               return of(null)
             }))

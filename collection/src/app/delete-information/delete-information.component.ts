@@ -5,6 +5,7 @@ import { of } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import {t} from '../texts'
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-delete-information',
@@ -20,9 +21,6 @@ export class DeleteInformationComponent {
   message: string = '';
   t = t;
 
-  private apiUrlGet = 'http://localhost:8090/users/get';
-  private apiUrl = 'http://localhost:8090/users/delete';
-
   constructor(private http: HttpClient) {}
 
   onDelete() {
@@ -30,7 +28,7 @@ export class DeleteInformationComponent {
     this.message = '';
 
     if (this.personalIdentityCodeToDelete) {
-      this.http.get(`${this.apiUrlGet}/${this.personalIdentityCodeToDelete}`)
+      this.http.get(`${environment.baseUrl}/get/${this.personalIdentityCodeToDelete}`)
       .pipe(
         catchError(err => {
           this.message = `${t.errorMessages.noInformationFound}`;
@@ -42,7 +40,7 @@ export class DeleteInformationComponent {
             const confirmDelete = confirm(`${t.confirmationMessage.delete.replace('{id}', this.personalIdentityCodeToDelete)}`);
 
             if (confirmDelete) {
-              this.http.delete(`${this.apiUrl}/${this.personalIdentityCodeToDelete}`)
+              this.http.delete(`${environment.baseUrl}/delete/${this.personalIdentityCodeToDelete}`)
                 .pipe(
                   catchError(err => {
                     this.message = `${t.errorMessages.deleteError}`;

@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, Validators, ReactiveFormsModule, } from '@angular/forms';
 import { catchError, of } from 'rxjs';
 import {t} from '../texts.js'
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-edit-information',
@@ -20,9 +21,6 @@ export class EditInformationComponent {
   showForm: boolean = false;
   t = t;
 
-  private apiUrlGet = 'http://localhost:8090/users/get';
-  private apiUrlUpdate = 'http://localhost:8090/users/update';
-
   constructor(private http: HttpClient, private fb: FormBuilder) {
     this.searchForm = this.fb.group({
       personalIdentityCode: ['', [Validators.required, Validators.pattern('^\\d{6}-\\d{4}$')]]
@@ -33,7 +31,7 @@ export class EditInformationComponent {
     const personalIdentityCode = this.searchForm.get('personalIdentityCode')?.value;
 
     if (this.searchForm.valid) {
-      this.http.get(`${this.apiUrlGet}/${personalIdentityCode}`).pipe(
+      this.http.get(`${environment.baseUrl}/get/${personalIdentityCode}`).pipe(
         catchError(err => {
           if (err.status === 404) {
             this.errorMessage = `${t.errorMessages.idNotFound}`;
@@ -72,8 +70,6 @@ export class EditInformationComponent {
     if (this.informationForm.valid) {
       const personalIdentityCode = this.informationForm.get('personalIdentityCode')?.value;
 
-      const updateUrl = `${this.apiUrlUpdate}/${personalIdentityCode}`;
-
       const userData = {
         basicInformation: {
           firstName: this.informationForm.get('firstName')?.value,
@@ -92,7 +88,7 @@ export class EditInformationComponent {
         }
       };
 
-      this.http.put(updateUrl, userData)
+      this.http.put(`${environment.baseUrl}/update/${personalIdentityCode}`, userData)
         .pipe(catchError(err => {
           this.errorMessage = `${t.errorMessages.editErro}`;
           return of(null);

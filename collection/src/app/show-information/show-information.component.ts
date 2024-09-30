@@ -5,7 +5,7 @@ import { of } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import {t} from '../texts.js'
-
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-show-information',
@@ -20,8 +20,6 @@ personalIdentityCode: string = '';
   errorMessage: string = '';
   t=t;
 
-  private apiUrl = 'http://localhost:8090/users/get';
-
   constructor(private http: HttpClient) {}
 
   onSearch() {
@@ -29,7 +27,7 @@ personalIdentityCode: string = '';
     this.errorMessage = '';
 
     if (this.personalIdentityCode) {
-      this.http.get(`${this.apiUrl}/${this.personalIdentityCode}`)
+      this.http.get(`${environment.baseUrl}/get/${this.personalIdentityCode}`)
         .pipe(
           catchError(err => {
             this.errorMessage = `${t.errorMessages.idNotFound}`;
