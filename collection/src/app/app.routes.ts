@@ -7,11 +7,11 @@ import { EditInformationComponent } from './edit-information/edit-information.co
 import { DeleteInformationComponent } from './delete-information/delete-information.component';
 
 export const routes: Routes = [
-    { path: '', redirectTo:'/add-information', pathMatch: 'full'},
-    { path: 'add-information', component: AddInformationComponent},
-    { path: 'show-information', component: ShowInformationComponent},
-    { path: 'show-informations', component: ShowInformationsComponent},
-    { path: 'edit-information', component: EditInformationComponent},
-    { path: 'delete-information', component: DeleteInformationComponent},
-    { path: '**', redirectTo: '/show-information' }
+  { path: '', redirectTo: '/add-information', pathMatch: 'full' },
+  { path: 'add-information', component: AddInformationComponent },
+  { path: 'show-information', component: ShowInformationComponent },
+  { path: 'show-informations', component: ShowInformationsComponent },
+  { path: 'edit-information', component: EditInformationComponent },
+  { path: 'delete-information', component: DeleteInformationComponent },
+  { path: '**', redirectTo: '/show-information' },
 ];

@@ -8,10 +8,9 @@ describe('DeleteInformationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DeleteInformationComponent]
-    })
-    .compileComponents();
-    
+      imports: [DeleteInformationComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(DeleteInformationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
