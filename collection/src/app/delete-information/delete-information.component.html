@@ -28,7 +28,6 @@
       <button 
         mat-button 
         type="submit" 
-        [disabled]="deleteForm.invalid"
         [ngClass]="{'valid-button': isIdentityCodeValid(), 'invalid-button': !isIdentityCodeValid()}">
         {{ t.button.delete }}
       </button>
