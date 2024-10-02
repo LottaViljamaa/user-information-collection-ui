@@ -130,7 +130,7 @@
       </mat-error>
     </mat-form-field>
 
-    <button mat-raised-button type="submit" [disabled]="informationForm.invalid">{{t.button.send}}</button>
+    <button mat-button type="submit" [disabled]="informationForm.invalid">{{t.button.send}}</button>
     <small *ngIf="message" class="message">{{ message }}</small>
   </form>
 </div>

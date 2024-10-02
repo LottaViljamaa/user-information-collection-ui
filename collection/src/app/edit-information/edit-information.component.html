@@ -153,7 +153,7 @@
     </mat-form-field>
 
     <div class="buttonContainer">
-      <button mat-raised-button type="submit" [disabled]="informationForm.invalid">{{t.button.save}}</button>
+      <button mat-button type="submit" [disabled]="informationForm.invalid">{{t.button.save}}</button>
       <small *ngIf="errorMessage" class="message">{{ errorMessage }}</small>
     </div>
   </form>
