@@ -20,7 +20,7 @@
             {{ t.userInformation.personalIdentityCode }} {{ t.errorMessages.mandatory }}
           </ng-container>
           <ng-container *ngIf="deleteForm.get('personalIdentityCodeToDelete')?.errors?.['pattern']">
-            {{ t.errorMessages.identityCodeForm }}
+            {{t.userInformation.personalIdentityCode}} {{ t.errorMessages.identityCodeForm }}
           </ng-container>
         </mat-error>
       </mat-form-field>
