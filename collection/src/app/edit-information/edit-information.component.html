@@ -103,6 +103,6 @@
           </div>
         </div>
     
-      <button type="submit">{{t.button.save}}</button>
+      <button type="submit" [disabled]="informationForm.invalid">{{t.button.save}}</button>
     </form>
 </div>
