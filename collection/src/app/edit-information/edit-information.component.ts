@@ -142,14 +142,14 @@ export class EditInformationComponent {
       this.http
         .put(`${environment.baseUrl}/update/${personalIdentityCode}`, userData)
         .pipe(
-          catchError((err) => {
-            this.errorMessage = `${t.errorMessages.editErro}`;
+          catchError(() => {
             return of(null);
           }),
         )
         .subscribe(() => {
           alert(`${t.successMessages.editSuccess}`);
           this.showForm = false;
+          this.searchForm.reset();
         });
     }
   }
