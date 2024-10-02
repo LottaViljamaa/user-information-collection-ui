@@ -12,11 +12,23 @@ import {
 import { CommonModule } from '@angular/common';
 import { t } from '../texts.js';
 import { environment } from '../../environments/environment.development.js';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select'; // Tarvitaan select-elementille
+import { MatButtonModule } from '@angular/material/button'; // Tarvitaan button-elementille
 
 @Component({
   selector: 'app-add-information',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
+  ],
   templateUrl: './add-information.component.html',
   styleUrl: '../app.component.css',
 })
@@ -121,7 +133,7 @@ export class AddInformationComponent implements OnInit {
             this.http
               .put(`${environment.baseUrl}/add`, userData)
               .pipe(
-                catchError((err) => {
+                catchError(() => {
                   return of(null);
                 }),
               )

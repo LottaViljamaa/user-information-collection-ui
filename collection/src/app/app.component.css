@@ -3,25 +3,47 @@
   flex-direction: column;
   text-align: center;
   align-items: center;
-  max-width: 600px;
+  max-width: 1000px;
   margin: auto;
+  background-color: #d4d4d4;
 }
 
 .navigation {
-  width: 1000px;
+  max-width: 1000px;
+}
+
+form {
+  width: 60%;
+  margin: auto;
+  border: 1px solid black;
+  padding: 50px;
+  border-radius: 20px;
+  margin-bottom: 50px;
+}
+
+.inputField {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.inputField input {
+  width: 100%; 
+  padding: 4px;
+}
+
+label {
+  margin-bottom: 8px;
+  display: block;
 }
 
 div {
   margin-bottom: 16px;
 }
 
-label {
-  display: block;
-  margin-bottom: 8px;
-}
-
-input {
-  width: 100%;
+input, select {
+  width: 20%;
   padding: 8px;
   box-sizing: border-box;
   max-width: 600px
