@@ -65,6 +65,11 @@ button[disabled] {
   cursor: not-allowed;
 }
 
+.message {
+  color: red;
+  display: block;
+}
+
 table {
   max-width: 600px;
   border-collapse: collapse;
