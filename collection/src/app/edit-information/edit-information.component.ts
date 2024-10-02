@@ -11,11 +11,23 @@ import {
 import { catchError, of } from 'rxjs';
 import { t } from '../texts.js';
 import { environment } from '../../environments/environment.development.js';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-edit-information',
   standalone: true,
-  imports: [FormsModule, CommonModule, ReactiveFormsModule],
+  imports: [
+    FormsModule,
+    CommonModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatButtonModule,
+  ],
   templateUrl: './edit-information.component.html',
   styleUrl: '../app.component.css',
 })
