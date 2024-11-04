@@ -17,7 +17,8 @@
           {
             "type": "attribute",
             "prefix": "app",
-            "style": "camelCase"
+            "style": "camelCase",
+            "endOfLine": "crlf"
           }
         ],
         "@angular-eslint/component-selector": [
