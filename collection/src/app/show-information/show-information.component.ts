@@ -1,24 +1,24 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { Component } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { catchError } from "rxjs/operators";
+import { of } from "rxjs";
 import {
   ReactiveFormsModule,
   FormBuilder,
   FormGroup,
   Validators,
-} from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { t } from '../texts';
-import { environment } from '../../environments/environment.development';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatButtonModule } from '@angular/material/button';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
+} from "@angular/forms";
+import { CommonModule } from "@angular/common";
+import { t } from "../texts";
+import { environment } from "../../environments/environment.development";
+import { MatInputModule } from "@angular/material/input";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatButtonModule } from "@angular/material/button";
+import { MatTableModule } from "@angular/material/table";
+import { MatPaginatorModule } from "@angular/material/paginator";
 
 @Component({
-  selector: 'app-show-information',
+  selector: "app-show-information",
   standalone: true,
   imports: [
     ReactiveFormsModule,
@@ -29,27 +29,27 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatTableModule,
     MatPaginatorModule,
   ],
-  templateUrl: './show-information.component.html',
-  styleUrls: ['../app.component.css'],
+  templateUrl: "./show-information.component.html",
+  styleUrls: ["../app.component.css"],
 })
 export class ShowInformationComponent {
-  personalIdentityCode: string = '';
+  personalIdentityCode: string = "";
   user: any;
-  errorMessage: string = '';
+  errorMessage: string = "";
   t = t;
 
   showInfoForm: FormGroup;
   displayedColumns: string[] = [
-    'firstName',
-    'lastName',
-    'personalIdentityCode',
-    'citizenship',
-    'gender',
-    'email',
-    'phoneNumber',
-    'streetAddress',
-    'city',
-    'postalCode',
+    "firstName",
+    "lastName",
+    "personalIdentityCode",
+    "citizenship",
+    "gender",
+    "email",
+    "phoneNumber",
+    "streetAddress",
+    "city",
+    "postalCode",
   ];
 
   constructor(
@@ -58,7 +58,7 @@ export class ShowInformationComponent {
   ) {
     this.showInfoForm = this.fb.group({
       personalIdentityCode: [
-        '',
+        "",
         [
           Validators.required,
           Validators.pattern(/^\d{6}[A-Z0-9+-]\d{3}[A-Z0-9]$/),
@@ -67,13 +67,13 @@ export class ShowInformationComponent {
     });
 
     this.showInfoForm.valueChanges.subscribe(() => {
-      this.errorMessage = '';
+      this.errorMessage = "";
     });
   }
 
   onSearch() {
     this.user = null;
-    this.errorMessage = '';
+    this.errorMessage = "";
 
     if (this.showInfoForm.valid) {
       this.personalIdentityCode = this.showInfoForm.value.personalIdentityCode;
@@ -82,7 +82,8 @@ export class ShowInformationComponent {
         .get(`${environment.baseUrl}/get/${this.personalIdentityCode}`)
         .pipe(
           catchError((err) => {
-            this.errorMessage = `${t.errorMessages.idNotFound}`;
+            alert(`${t.errorMessages.backendError}`);
+            this.errorMessage = `${t.errorMessages.backendError}`;
             return of(null);
           }),
         )
