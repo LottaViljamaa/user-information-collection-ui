@@ -139,6 +139,7 @@ export class AddInformationComponent implements OnInit {
                 }),
               )
               .subscribe(() => {
+                this.message = "";
                 alert(`${t.successMessages.success}`);
               });
           }
