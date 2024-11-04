@@ -1,24 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { Component, OnInit } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { catchError } from "rxjs/operators";
+import { of } from "rxjs";
 import {
   FormBuilder,
   FormGroup,
   Validators,
   FormsModule,
   ReactiveFormsModule,
-} from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { t } from '../texts.js';
-import { environment } from '../../environments/environment.development.js';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
-import { MatButtonModule } from '@angular/material/button';
+} from "@angular/forms";
+import { CommonModule } from "@angular/common";
+import { t } from "../texts.js";
+import { environment } from "../../environments/environment.development.js";
+import { MatInputModule } from "@angular/material/input";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatSelectModule } from "@angular/material/select";
+import { MatButtonModule } from "@angular/material/button";
 
 @Component({
-  selector: 'app-add-information',
+  selector: "app-add-information",
   standalone: true,
   imports: [
     CommonModule,
@@ -29,14 +29,14 @@ import { MatButtonModule } from '@angular/material/button';
     MatSelectModule,
     MatButtonModule,
   ],
-  templateUrl: './add-information.component.html',
-  styleUrl: '../app.component.css',
+  templateUrl: "./add-information.component.html",
+  styleUrl: "../app.component.css",
 })
 export class AddInformationComponent implements OnInit {
   informationForm!: FormGroup;
   t = t;
 
-  message: string = '';
+  message: string = "";
 
   constructor(
     private fb: FormBuilder,
@@ -46,39 +46,39 @@ export class AddInformationComponent implements OnInit {
   ngOnInit(): void {
     this.informationForm = this.fb.group({
       firstName: [
-        'Matti',
-        [Validators.required, Validators.pattern('^[a-zA-Z-]+$')],
+        "Matti",
+        [Validators.required, Validators.pattern("^[a-zA-Z-]+$")],
       ],
       lastName: [
-        'Meikalainen',
-        [Validators.required, Validators.pattern('^[a-zA-Z-]+$')],
+        "Meikalainen",
+        [Validators.required, Validators.pattern("^[a-zA-Z-]+$")],
       ],
       personalIdentityCode: [
-        '000000-0000',
-        [Validators.required, Validators.pattern('^\\d{6}-\\d{4}$')],
+        "000000-0000",
+        [Validators.required, Validators.pattern("^\\d{6}-\\d{4}$")],
       ],
       citizenship: [
-        'Suomi',
-        [Validators.required, Validators.pattern('^[a-zA-Z]+$')],
+        "Suomi",
+        [Validators.required, Validators.pattern("^[a-zA-Z]+$")],
       ],
-      gender: ['Mies', Validators.required],
+      gender: ["Mies", Validators.required],
       email: [
-        'matti.meikalainen@esimerkki.com',
+        "matti.meikalainen@esimerkki.com",
         [Validators.required, Validators.email],
       ],
       phoneNumber: [
-        '044123456',
+        "044123456",
         [
           Validators.required,
-          Validators.pattern('^[+]?[0-9]*$'),
+          Validators.pattern("^[+]?[0-9]*$"),
           Validators.maxLength(20),
         ],
       ],
-      streetAddress: ['Esimerkkikatu', Validators.required],
-      city: ['Esimerkki', Validators.required],
+      streetAddress: ["Esimerkkikatu", Validators.required],
+      city: ["Esimerkki", Validators.required],
       postalCode: [
-        '00000',
-        [Validators.required, Validators.pattern('^\\d{5}$')],
+        "00000",
+        [Validators.required, Validators.pattern("^\\d{5}$")],
       ],
     });
   }
@@ -86,7 +86,7 @@ export class AddInformationComponent implements OnInit {
   onSubmit(): void {
     if (this.informationForm.valid) {
       const personalIdentityCode = this.informationForm.get(
-        'personalIdentityCode',
+        "personalIdentityCode",
       )?.value;
 
       this.http
@@ -96,6 +96,7 @@ export class AddInformationComponent implements OnInit {
             if (err.status === 404) {
               return of(null);
             } else {
+              this.message = `${t.errorMessages.backendError}`;
               throw err;
             }
           }),
@@ -105,24 +106,24 @@ export class AddInformationComponent implements OnInit {
             this.message = `${t.errorMessages.sendError} ${t.errorMessages.personalIdentityCodeExists}`;
           } else {
             const basicInformation = {
-              firstName: this.informationForm.get('firstName')?.value,
-              surname: this.informationForm.get('lastName')?.value,
+              firstName: this.informationForm.get("firstName")?.value,
+              surname: this.informationForm.get("lastName")?.value,
               personalIdentityCode: this.informationForm.get(
-                'personalIdentityCode',
+                "personalIdentityCode",
               )?.value,
-              citizenship: this.informationForm.get('citizenship')?.value,
-              gender: this.informationForm.get('gender')?.value,
+              citizenship: this.informationForm.get("citizenship")?.value,
+              gender: this.informationForm.get("gender")?.value,
             };
 
             const contactInformation = {
               personalIdentityCode: this.informationForm.get(
-                'personalIdentityCode',
+                "personalIdentityCode",
               )?.value,
-              email: this.informationForm.get('email')?.value,
-              phoneNumber: this.informationForm.get('phoneNumber')?.value,
-              streetAddress: this.informationForm.get('streetAddress')?.value,
-              city: this.informationForm.get('city')?.value,
-              postalCode: this.informationForm.get('postalCode')?.value,
+              email: this.informationForm.get("email")?.value,
+              phoneNumber: this.informationForm.get("phoneNumber")?.value,
+              streetAddress: this.informationForm.get("streetAddress")?.value,
+              city: this.informationForm.get("city")?.value,
+              postalCode: this.informationForm.get("postalCode")?.value,
             };
 
             const userData = {
