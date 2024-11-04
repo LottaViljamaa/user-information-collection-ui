@@ -82,8 +82,12 @@ export class ShowInformationComponent {
         .get(`${environment.baseUrl}/get/${this.personalIdentityCode}`)
         .pipe(
           catchError((err) => {
-            alert(`${t.errorMessages.backendError}`);
-            this.errorMessage = `${t.errorMessages.backendError}`;
+            if (err.status === 404) {
+              this.errorMessage = `${t.errorMessages.idNotFound}`;
+            } else {
+              this.errorMessage = `${t.errorMessages.backendError}`;
+              throw err;
+            }
             return of(null);
           }),
         )
