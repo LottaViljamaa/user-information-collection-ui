@@ -28,9 +28,3 @@ Tämän sovelluksen kehitystyö on vielä kesken. Alla kuitenkin tiedot nykyises
 - Käytettävyyden parantaminen
 
 
-####
-Kehityskohteita: 
-- Koodin jäsentely
-- Unit -testien lisääminen HTTP -pyynnöille
-
-
