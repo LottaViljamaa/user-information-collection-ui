@@ -2,42 +2,47 @@
   <h1>Kaikkien henkilöiden tiedot</h1>
 
   <div *ngIf="users.length > 0; else noData">
-    <p>{{ t.headers.additionalHeaders.totalUsers.replace('{amount}', users.length.toString())}}</p>
+    <p>
+      {{
+        t.headers.additionalHeaders.totalUsers.replace(
+          "{amount}",
+          users.length.toString()
+        )
+      }}
+    </p>
     <table>
-        <thead>
-          <tr>
-            <th>{{t.userInformation.firstName}}</th>
-              <th>{{t.userInformation.lastName}}</th>
-              <th>{{t.userInformation.personalIdentityCode}}</th>
-              <th>{{t.userInformation.citizenship}}</th>
-              <th>{{t.userInformation.gender}}</th>
-              <th>{{t.userInformation.email}}</th>
-              <th>{{t.userInformation.phoneNumber}}</th>
-              <th>{{t.userInformation.streetAddress}}</th>
-              <th>{{t.userInformation.city}}</th>
-              <th>{{t.userInformation.postalCode}}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let user of users">
-              <td>{{ user.basicInformation?.firstName }}</td>
-              <td>{{ user.basicInformation?.surname }}</td>
-              <td>{{ user.basicInformation?.personalIdentityCode }}</td>
-              <td>{{ user.basicInformation?.citizenship }}</td>
-              <td>{{ user.basicInformation?.gender }}</td>
-              <td>{{ user.contactInformation?.email }}</td>
-              <td>{{ user.contactInformation?.phoneNumber }}</td>
-              <td>{{ user.contactInformation?.streetAddress }}</td>
-              <td>{{ user.contactInformation?.city }}</td>
-              <td>{{ user.contactInformation?.postalCode }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    
-    <ng-template #noData>
-      <p>{{t.errorMessages.noInformationFound}}</p>
-    </ng-template>
+      <thead>
+        <tr>
+          <th>{{ t.userInformation.firstName }}</th>
+          <th>{{ t.userInformation.lastName }}</th>
+          <th>{{ t.userInformation.personalIdentityCode }}</th>
+          <th>{{ t.userInformation.citizenship }}</th>
+          <th>{{ t.userInformation.gender }}</th>
+          <th>{{ t.userInformation.email }}</th>
+          <th>{{ t.userInformation.phoneNumber }}</th>
+          <th>{{ t.userInformation.streetAddress }}</th>
+          <th>{{ t.userInformation.city }}</th>
+          <th>{{ t.userInformation.postalCode }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.basicInformation?.firstName }}</td>
+          <td>{{ user.basicInformation?.surname }}</td>
+          <td>{{ user.basicInformation?.personalIdentityCode }}</td>
+          <td>{{ user.basicInformation?.citizenship }}</td>
+          <td>{{ user.basicInformation?.gender }}</td>
+          <td>{{ user.contactInformation?.email }}</td>
+          <td>{{ user.contactInformation?.phoneNumber }}</td>
+          <td>{{ user.contactInformation?.streetAddress }}</td>
+          <td>{{ user.contactInformation?.city }}</td>
+          <td>{{ user.contactInformation?.postalCode }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
+  <ng-template #noData>
+    <p>{{ t.errorMessages.noInformationFound }}</p>
+  </ng-template>
 </div>
-  

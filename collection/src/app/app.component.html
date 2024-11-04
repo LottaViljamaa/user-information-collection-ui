@@ -1,20 +1,29 @@
 <main class="main">
   <div class="content">
-  <div class="heade">
-    <h1>{{t.headers.mainHeader}}</h1>
-  </div>
+    <div class="heade">
+      <h1>{{ t.headers.mainHeader }}</h1>
+    </div>
     <div class="navigation">
-      <button mat-raised-button [routerLink]="['/add-information']">Lisää</button>
-      <button mat-raised-button [routerLink]="['/edit-information']">Muokkaa</button>
-      <button mat-raised-button [routerLink]="['/delete-information']">Poista</button>
-      <button mat-raised-button [routerLink]="['/show-informations']">Näytä henkilötiedot</button>
-      <button mat-raised-button [routerLink]="['/show-information']">Näytä henkilön tiedot</button>
+      <button mat-raised-button [routerLink]="['/add-information']">
+        Lisää
+      </button>
+      <button mat-raised-button [routerLink]="['/edit-information']">
+        Muokkaa
+      </button>
+      <button mat-raised-button [routerLink]="['/delete-information']">
+        Poista
+      </button>
+      <button mat-raised-button [routerLink]="['/show-informations']">
+        Näytä henkilötiedot
+      </button>
+      <button mat-raised-button [routerLink]="['/show-information']">
+        Näytä henkilön tiedot
+      </button>
     </div>
     <div class="content">
       <router-outlet></router-outlet>
     </div>
   </div>
 </main>
-
 
 <router-outlet />

@@ -1,6 +1,6 @@
 {
-    "/users": {
-      "target": "http://localhost:8090",
-      "secure": false
-    }
+  "/users": {
+    "target": "http://localhost:8090",
+    "secure": false
+  }
 }

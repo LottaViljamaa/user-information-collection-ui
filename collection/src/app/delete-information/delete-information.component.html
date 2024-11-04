@@ -1,37 +1,55 @@
 <div class="content">
-    <h1>{{ t.headers.deleteInformation }}</h1>
-  
-    <form [formGroup]="deleteForm" (ngSubmit)="onDelete()">
-      <h2>{{ t.headers.additionalHeaders.deleteInformation }}</h2>
-  
-      <mat-form-field class="inputField" appearance="fill">
-        <mat-label>{{ t.userInformation.personalIdentityCode }}</mat-label>
-  
-        <input
-          matInput
-          formControlName="personalIdentityCodeToDelete"
-          type="text"
-          required
-          (input)="deleteForm.get('personalIdentityCodeToDelete')?.markAsTouched()"
-        />
-  
-        <mat-error *ngIf="deleteForm.get('personalIdentityCodeToDelete')?.touched">
-          <ng-container *ngIf="deleteForm.get('personalIdentityCodeToDelete')?.errors?.['required']">
-            {{ t.userInformation.personalIdentityCode }} {{ t.errorMessages.mandatory }}
-          </ng-container>
-          <ng-container *ngIf="deleteForm.get('personalIdentityCodeToDelete')?.errors?.['pattern']">
-            {{t.userInformation.personalIdentityCode}} {{ t.errorMessages.identityCodeForm }}
-          </ng-container>
-        </mat-error>
-      </mat-form-field>
-  
-      <button 
-        mat-button 
-        type="submit" 
-        [ngClass]="{'valid-button': isIdentityCodeValid(), 'invalid-button': !isIdentityCodeValid()}">
-        {{ t.button.delete }}
-      </button>
-  
-      <small *ngIf="message" class="message">{{ message }}</small>
-    </form>
-</div>  
+  <h1>{{ t.headers.deleteInformation }}</h1>
+
+  <form [formGroup]="deleteForm" (ngSubmit)="onDelete()">
+    <h2>{{ t.headers.additionalHeaders.deleteInformation }}</h2>
+
+    <mat-form-field class="inputField" appearance="fill">
+      <mat-label>{{ t.userInformation.personalIdentityCode }}</mat-label>
+
+      <input
+        matInput
+        formControlName="personalIdentityCodeToDelete"
+        type="text"
+        required
+        (input)="
+          deleteForm.get('personalIdentityCodeToDelete')?.markAsTouched()
+        "
+      />
+
+      <mat-error
+        *ngIf="deleteForm.get('personalIdentityCodeToDelete')?.touched"
+      >
+        <ng-container
+          *ngIf="
+            deleteForm.get('personalIdentityCodeToDelete')?.errors?.['required']
+          "
+        >
+          {{ t.userInformation.personalIdentityCode }}
+          {{ t.errorMessages.mandatory }}
+        </ng-container>
+        <ng-container
+          *ngIf="
+            deleteForm.get('personalIdentityCodeToDelete')?.errors?.['pattern']
+          "
+        >
+          {{ t.userInformation.personalIdentityCode }}
+          {{ t.errorMessages.identityCodeForm }}
+        </ng-container>
+      </mat-error>
+    </mat-form-field>
+
+    <button
+      mat-button
+      type="submit"
+      [ngClass]="{
+        'valid-button': isIdentityCodeValid(),
+        'invalid-button': !isIdentityCodeValid(),
+      }"
+    >
+      {{ t.button.delete }}
+    </button>
+
+    <small *ngIf="message" class="message">{{ message }}</small>
+  </form>
+</div>

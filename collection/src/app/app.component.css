@@ -29,7 +29,7 @@ form {
 }
 
 .inputField input {
-  width: 100%; 
+  width: 100%;
   padding: 4px;
 }
 
@@ -42,11 +42,12 @@ div {
   margin-bottom: 16px;
 }
 
-input, select {
+input,
+select {
   width: 20%;
   padding: 8px;
   box-sizing: border-box;
-  max-width: 600px
+  max-width: 600px;
 }
 
 button {
@@ -75,7 +76,8 @@ table {
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   border: 1px solid black;
   padding: 8px;
   text-align: left;
