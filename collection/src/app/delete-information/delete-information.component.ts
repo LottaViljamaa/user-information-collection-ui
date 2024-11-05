@@ -53,6 +53,10 @@ export class DeleteInformationComponent {
         .get(`${environment.baseUrl}/get/${personalIdentityCodeToDelete}`)
         .pipe(
           catchError((err) => {
+            if (err.status === 404) {
+              this.message = `${t.userInformation.personalIdentityCode}${t.errorMessages.idNotFound}`;
+              return of(null);
+            }
             this.message = `${t.errorMessages.backendError}`;
             return of(null);
           }),
@@ -75,7 +79,9 @@ export class DeleteInformationComponent {
                   }),
                 )
                 .subscribe(() => {
-                  this.message = `${t.successMessages.deleteSuccess.replace("{id}", personalIdentityCodeToDelete)}`;
+                  alert(
+                    `${t.successMessages.deleteSuccess.replace("{id}", personalIdentityCodeToDelete)}`,
+                  );
                   this.deleteForm.reset();
                 });
             } else {
