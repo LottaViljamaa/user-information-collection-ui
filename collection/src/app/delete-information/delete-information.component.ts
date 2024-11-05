@@ -75,7 +75,9 @@ export class DeleteInformationComponent {
                   }),
                 )
                 .subscribe(() => {
-                  this.message = `${t.successMessages.deleteSuccess.replace("{id}", personalIdentityCodeToDelete)}`;
+                  alert(
+                    `${t.successMessages.deleteSuccess.replace("{id}", personalIdentityCodeToDelete)}`,
+                  );
                   this.deleteForm.reset();
                 });
             } else {
