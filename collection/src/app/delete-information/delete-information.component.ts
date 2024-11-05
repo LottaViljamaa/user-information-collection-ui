@@ -53,6 +53,10 @@ export class DeleteInformationComponent {
         .get(`${environment.baseUrl}/get/${personalIdentityCodeToDelete}`)
         .pipe(
           catchError((err) => {
+            if (err.status === 404) {
+              this.message = `${t.userInformation.personalIdentityCode}${t.errorMessages.idNotFound}`;
+              return of(null);
+            }
             this.message = `${t.errorMessages.backendError}`;
             return of(null);
           }),
