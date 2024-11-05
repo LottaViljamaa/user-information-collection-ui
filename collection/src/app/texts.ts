@@ -42,7 +42,7 @@ export const t = {
     personalIdentityCodeExists: "annettu henkilötunnus on jo käytössä.",
     mandatory: " tieto on pakollinen.",
     nameForm: " syöte voi sisältää vain kirjaimia ja väliviivan.",
-    identityCodeForm: " tieto täytyy olla muodossa: 000000-0000.",
+    identityCodeForm: " syötteen täyttyy olla täsmälleen 6 numeroa pitkä.",
     lettersOnly: " kenttä voi sisältää vain kirjaimia.",
     emailForm: " syötä kelvollinen sähköpostiosoite",
     phoneNumberForm: ' kenttä voi sisältää vain numeroita ja "+" -merkin.',

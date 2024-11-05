@@ -59,10 +59,7 @@ export class ShowInformationComponent {
     this.showInfoForm = this.fb.group({
       personalIdentityCode: [
         "",
-        [
-          Validators.required,
-          Validators.pattern(/^\d{6}[A-Z0-9+-]\d{3}[A-Z0-9]$/),
-        ],
+        [Validators.required, Validators.pattern("^\\d{6}")],
       ],
     });
 

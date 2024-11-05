@@ -46,7 +46,7 @@ export class EditInformationComponent {
     this.searchForm = this.fb.group({
       personalIdentityCode: [
         "",
-        [Validators.required, Validators.pattern("^\\d{6}-\\d{4}$")],
+        [Validators.required, Validators.pattern("^\\d{6}")],
       ],
     });
   }
