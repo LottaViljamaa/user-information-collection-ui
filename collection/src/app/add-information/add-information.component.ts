@@ -54,8 +54,8 @@ export class AddInformationComponent implements OnInit {
         [Validators.required, Validators.pattern("^[a-zA-Z-]+$")],
       ],
       personalIdentityCode: [
-        "000000-0000",
-        [Validators.required, Validators.pattern("^\\d{6}-\\d{4}$")],
+        "000000",
+        [Validators.required, Validators.pattern("^\\d{6}")],
       ],
       citizenship: [
         "Suomi",

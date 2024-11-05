@@ -37,7 +37,7 @@ export class DeleteInformationComponent {
     this.deleteForm = this.fb.group({
       personalIdentityCodeToDelete: [
         "",
-        [Validators.required, Validators.pattern("^\\d{6}-\\d{4}$")],
+        [Validators.required, Validators.pattern("^\\d{6}")],
       ],
     });
   }
