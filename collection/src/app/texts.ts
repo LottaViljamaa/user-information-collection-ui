@@ -74,6 +74,6 @@ export const t = {
     edit: "Muokkaa",
     delete: "Poista",
     showInformations: "Näytä henkilötiedot",
-    showInformation: "Näytä henkilön tiedot",
+    showInformation: "Hae henkilön tiedot",
   },
 };
