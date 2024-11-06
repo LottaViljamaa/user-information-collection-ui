@@ -1,9 +1,6 @@
 <div class="content">
   <h1>{{ t.headers.showInformation }}</h1>
 
-  <div class="personInformationForm">
-    
-
     <form [formGroup]="showInfoForm" (ngSubmit)="onSearch()">
       <h2>{{ t.headers.additionalHeaders.showInformation }}</h2>
       <mat-form-field class="inputField" appearance="fill">
@@ -130,5 +127,4 @@
         </table>
       </div>
     </form>
-  </div>
 </div>
