@@ -1,133 +1,47 @@
 <div class="content">
   <h1>{{ t.headers.showInformation }}</h1>
 
-  <div class="personInformationForm">
+  <form [formGroup]="showInfoForm" (ngSubmit)="onSearch()">
     <h2>{{ t.headers.additionalHeaders.showInformation }}</h2>
+    <mat-form-field class="inputField" appearance="fill">
+      <mat-label>{{ t.userInformation.personalIdentityCode }}</mat-label>
+      <input matInput formControlName="personalIdentityCode" type="text" />
+      <mat-error *ngIf="showInfoForm.get('personalIdentityCode')?.touched">
+        <ng-container
+          *ngIf="showInfoForm.get('personalIdentityCode')?.errors?.['required']"
+        >
+          {{ t.userInformation.personalIdentityCode }}
+          {{ t.errorMessages.mandatory }}
+        </ng-container>
+        <ng-container
+          *ngIf="showInfoForm.get('personalIdentityCode')?.errors?.['pattern']"
+        >
+          {{ t.userInformation.personalIdentityCode }}
+          {{ t.errorMessages.identityCodeForm }}
+        </ng-container>
+      </mat-error>
+    </mat-form-field>
 
-    <form [formGroup]="showInfoForm" (ngSubmit)="onSearch()">
-      <mat-form-field class="inputField" appearance="fill">
-        <mat-label>{{ t.userInformation.personalIdentityCode }}</mat-label>
-        <input matInput formControlName="personalIdentityCode" type="text" />
-        <mat-error *ngIf="showInfoForm.get('personalIdentityCode')?.touched">
-          <ng-container
-            *ngIf="
-              showInfoForm.get('personalIdentityCode')?.errors?.['required']
-            "
-          >
-            {{ t.userInformation.personalIdentityCode }}
-            {{ t.errorMessages.mandatory }}
-          </ng-container>
-          <ng-container
-            *ngIf="
-              showInfoForm.get('personalIdentityCode')?.errors?.['pattern']
-            "
-          >
-            {{ t.userInformation.personalIdentityCode }}
-            {{ t.errorMessages.identityCodeForm }}
-          </ng-container>
-        </mat-error>
-      </mat-form-field>
+    <button mat-button type="submit">
+      {{ t.button.search }}
+    </button>
+    <small *ngIf="errorMessage" class="message">{{ errorMessage }}</small>
 
-      <button mat-button type="submit">
-        {{ t.button.send }}
-      </button>
-      <small *ngIf="errorMessage" class="message">{{ errorMessage }}</small>
-      <div *ngIf="user" class="mat-elevation-z8">
-        <table mat-table [dataSource]="[user]" class="mat-table">
-          <ng-container matColumnDef="firstName">
-            <th mat-header-cell *matHeaderCellDef>
-              {{ t.userInformation.firstName }}
-            </th>
-            <td mat-cell *matCellDef="let user">
-              {{ user.basicInformation.firstName }}
-            </td>
-          </ng-container>
+    <div *ngIf="user" class="mat-elevation-z8">
+      <table mat-table [dataSource]="userData" class="mat-table">
+        
+        <ng-container matColumnDef="label">
+          <th mat-header-cell *matHeaderCellDef class="label"></th>
+          <td mat-cell *matCellDef="let element" class="label" >{{ element.label }}</td>
+        </ng-container>
 
-          <ng-container matColumnDef="lastName">
-            <th mat-header-cell *matHeaderCellDef>
-              {{ t.userInformation.lastName }}
-            </th>
-            <td mat-cell *matCellDef="let user">
-              {{ user.basicInformation.surname }}
-            </td>
-          </ng-container>
+        <ng-container matColumnDef="value">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element">{{ element.value }}</td>
+        </ng-container>
 
-          <ng-container matColumnDef="personalIdentityCode">
-            <th mat-header-cell *matHeaderCellDef>
-              {{ t.userInformation.personalIdentityCode }}
-            </th>
-            <td mat-cell *matCellDef="let user">
-              {{ user.basicInformation.personalIdentityCode }}
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="citizenship">
-            <th mat-header-cell *matHeaderCellDef>
-              {{ t.userInformation.citizenship }}
-            </th>
-            <td mat-cell *matCellDef="let user">
-              {{ user.basicInformation.citizenship }}
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="gender">
-            <th mat-header-cell *matHeaderCellDef>
-              {{ t.userInformation.gender }}
-            </th>
-            <td mat-cell *matCellDef="let user">
-              {{ user.basicInformation.gender }}
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="email">
-            <th mat-header-cell *matHeaderCellDef>
-              {{ t.userInformation.email }}
-            </th>
-            <td mat-cell *matCellDef="let user">
-              {{ user.contactInformation.email }}
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="phoneNumber">
-            <th mat-header-cell *matHeaderCellDef>
-              {{ t.userInformation.phoneNumber }}
-            </th>
-            <td mat-cell *matCellDef="let user">
-              {{ user.contactInformation.phoneNumber }}
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="streetAddress">
-            <th mat-header-cell *matHeaderCellDef>
-              {{ t.userInformation.streetAddress }}
-            </th>
-            <td mat-cell *matCellDef="let user">
-              {{ user.contactInformation.streetAddress }}
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="city">
-            <th mat-header-cell *matHeaderCellDef>
-              {{ t.userInformation.city }}
-            </th>
-            <td mat-cell *matCellDef="let user">
-              {{ user.contactInformation.city }}
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="postalCode">
-            <th mat-header-cell *matHeaderCellDef>
-              {{ t.userInformation.postalCode }}
-            </th>
-            <td mat-cell *matCellDef="let user">
-              {{ user.contactInformation.postalCode }}
-            </td>
-          </ng-container>
-
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-        </table>
-      </div>
-    </form>
-  </div>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+  </form>
 </div>

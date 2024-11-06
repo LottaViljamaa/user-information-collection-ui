@@ -12,10 +12,8 @@ import { CommonModule } from "@angular/common";
 import { t } from "../texts";
 import { environment } from "../../environments/environment.development";
 import { MatInputModule } from "@angular/material/input";
-import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatButtonModule } from "@angular/material/button";
 import { MatTableModule } from "@angular/material/table";
-import { MatPaginatorModule } from "@angular/material/paginator";
 
 @Component({
   selector: "app-show-information",
@@ -23,11 +21,9 @@ import { MatPaginatorModule } from "@angular/material/paginator";
   imports: [
     ReactiveFormsModule,
     CommonModule,
-    MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
     MatTableModule,
-    MatPaginatorModule,
   ],
   templateUrl: "./show-information.component.html",
   styleUrls: ["../app.component.css"],
@@ -35,22 +31,12 @@ import { MatPaginatorModule } from "@angular/material/paginator";
 export class ShowInformationComponent {
   personalIdentityCode: string = "";
   user: any;
+  userData: { label: string; value: any }[] = [];
   errorMessage: string = "";
   t = t;
 
   showInfoForm: FormGroup;
-  displayedColumns: string[] = [
-    "firstName",
-    "lastName",
-    "personalIdentityCode",
-    "citizenship",
-    "gender",
-    "email",
-    "phoneNumber",
-    "streetAddress",
-    "city",
-    "postalCode",
-  ];
+  displayedColumns: string[] = ["label", "value"];
 
   constructor(
     private http: HttpClient,
@@ -91,6 +77,7 @@ export class ShowInformationComponent {
         .subscribe((data: any) => {
           if (data) {
             this.user = data;
+            this.setUserData();
           } else {
             this.errorMessage = `${t.errorMessages.idNotFound}`;
           }
@@ -98,5 +85,52 @@ export class ShowInformationComponent {
     } else {
       this.errorMessage = `${t.userInformation.personalIdentityCode} ${t.errorMessages.mandatory}`;
     }
+  }
+
+  setUserData() {
+    this.userData = [];
+
+    this.userData = [
+      {
+        label: t.userInformation.firstName,
+        value: this.user.basicInformation.firstName,
+      },
+      {
+        label: t.userInformation.lastName,
+        value: this.user.basicInformation.surname,
+      },
+      {
+        label: t.userInformation.personalIdentityCode,
+        value: this.user.basicInformation.personalIdentityCode,
+      },
+      {
+        label: t.userInformation.citizenship,
+        value: this.user.basicInformation.citizenship,
+      },
+      {
+        label: t.userInformation.gender,
+        value: this.user.basicInformation.gender,
+      },
+      {
+        label: t.userInformation.email,
+        value: this.user.contactInformation.email,
+      },
+      {
+        label: t.userInformation.phoneNumber,
+        value: this.user.contactInformation.phoneNumber,
+      },
+      {
+        label: t.userInformation.streetAddress,
+        value: this.user.contactInformation.streetAddress,
+      },
+      {
+        label: t.userInformation.city,
+        value: this.user.contactInformation.city,
+      },
+      {
+        label: t.userInformation.postalCode,
+        value: this.user.contactInformation.postalCode,
+      },
+    ];
   }
 }
