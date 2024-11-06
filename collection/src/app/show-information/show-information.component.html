@@ -2,9 +2,10 @@
   <h1>{{ t.headers.showInformation }}</h1>
 
   <div class="personInformationForm">
-    <h2>{{ t.headers.additionalHeaders.showInformation }}</h2>
+    
 
     <form [formGroup]="showInfoForm" (ngSubmit)="onSearch()">
+      <h2>{{ t.headers.additionalHeaders.showInformation }}</h2>
       <mat-form-field class="inputField" appearance="fill">
         <mat-label>{{ t.userInformation.personalIdentityCode }}</mat-label>
         <input matInput formControlName="personalIdentityCode" type="text" />
