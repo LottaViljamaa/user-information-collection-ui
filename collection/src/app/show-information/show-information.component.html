@@ -23,7 +23,7 @@
     </mat-form-field>
 
     <app-button
-      [disabled]="false"
+      [disabled]="showInfoForm.invalid"
       [buttonText]="t.button.search "
       [message]="errorMessage"
       [type]="'submit'"
