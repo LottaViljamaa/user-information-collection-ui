@@ -21,6 +21,13 @@ form {
   margin-bottom: 50px;
 }
 
+button {
+  padding: 10px;
+  color: white;
+  margin: 10px;
+  width: auto;
+}
+
 .inputField {
   width: 100%;
   display: flex;
