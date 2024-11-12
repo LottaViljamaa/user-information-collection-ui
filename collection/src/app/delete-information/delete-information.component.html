@@ -39,17 +39,12 @@
       </mat-error>
     </mat-form-field>
 
-    <button
-      mat-button
-      type="submit"
-      [ngClass]="{
-        'valid-button': isIdentityCodeValid(),
-        'invalid-button': !isIdentityCodeValid(),
-      }"
-    >
-      {{ t.button.delete }}
-    </button>
+    <app-button
+      [disabled]="deleteForm.invalid"
+      [buttonText]="t.button.delete"
+      [message]="message"
+      [type]="'submit'"
+    ></app-button>
 
-    <small *ngIf="message" class="message">{{ message }}</small>
   </form>
 </div>
