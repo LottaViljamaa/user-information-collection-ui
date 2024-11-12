@@ -12,7 +12,7 @@ import { CommonModule } from "@angular/common";
 import { t } from "../texts";
 import { environment } from "../../environments/environment.development";
 import { MatInputModule } from "@angular/material/input";
-import { MatButtonModule } from "@angular/material/button";
+import { ButtonComponent } from "../shared/button/button.component.js";
 import { MatTableModule } from "@angular/material/table";
 
 @Component({
@@ -22,7 +22,7 @@ import { MatTableModule } from "@angular/material/table";
     ReactiveFormsModule,
     CommonModule,
     MatInputModule,
-    MatButtonModule,
+    ButtonComponent,
     MatTableModule,
   ],
   templateUrl: "./show-information.component.html",

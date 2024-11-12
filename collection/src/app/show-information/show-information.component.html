@@ -22,10 +22,12 @@
       </mat-error>
     </mat-form-field>
 
-    <button mat-button type="submit">
-      {{ t.button.search }}
-    </button>
-    <small *ngIf="errorMessage" class="message">{{ errorMessage }}</small>
+    <app-button
+      [disabled]="false"
+      [buttonText]="t.button.search "
+      [message]="errorMessage"
+      [type]="'submit'"
+    ></app-button>
 
     <div *ngIf="user" class="mat-elevation-z8">
       <table mat-table [dataSource]="userData" class="mat-table">
