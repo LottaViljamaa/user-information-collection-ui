@@ -15,7 +15,7 @@ import { environment } from "../../environments/environment.development.js";
 import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSelectModule } from "@angular/material/select";
-import { MatButtonModule } from "@angular/material/button";
+import { ButtonComponent } from "../shared/button/button.component.js";
 
 @Component({
   selector: "app-add-information",
@@ -27,7 +27,7 @@ import { MatButtonModule } from "@angular/material/button";
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatButtonModule,
+    ButtonComponent,
   ],
   templateUrl: "./add-information.component.html",
   styleUrl: "../app.component.css",

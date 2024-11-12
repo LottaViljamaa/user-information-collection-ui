@@ -1,5 +1,5 @@
 <div class="content">
-  <h1>Lisää uusi henkilötieto</h1>
+  <h1>{{t.headers.addInformation}}</h1>
   <form [formGroup]="informationForm" (ngSubmit)="onSubmit()">
     <mat-form-field class="inputField">
       <mat-label for="firstName">{{ t.userInformation.firstName }}</mat-label>
@@ -205,10 +205,13 @@
         </ng-container>
       </mat-error>
     </mat-form-field>
+    
+    <app-button
+      [disabled]="informationForm.invalid"
+      buttonText="{{t.button.send}}"
+      [message]="message"
+      type="submit">
+    </app-button>
 
-    <button mat-button type="submit" [disabled]="informationForm.invalid">
-      {{ t.button.send }}
-    </button>
-    <small *ngIf="message" class="message">{{ message }}</small>
   </form>
 </div>
