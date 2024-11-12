@@ -7,9 +7,9 @@ import { t } from "../texts";
 import { environment } from "../../environments/environment.development";
 import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatButtonModule } from "@angular/material/button";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
+import { ButtonComponent } from "../shared/button/button.component";
 
 @Component({
   selector: "app-delete-information",
@@ -20,7 +20,7 @@ import { CommonModule } from "@angular/common";
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule,
+    ButtonComponent,
   ],
   templateUrl: "./delete-information.component.html",
   styleUrls: ["../app.component.css"],

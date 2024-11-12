@@ -35,8 +35,13 @@
       </mat-error>
     </mat-form-field>
 
-    <button mat-button type="submit">{{ t.button.search }}</button>
-    <small *ngIf="errorMessage" class="message">{{ errorMessage }}</small>
+    <app-button
+      [disabled]="searchForm.invalid"
+      [buttonText]="t.button.search "
+      [message]="errorMessage"
+      [type]="'submit'"
+    ></app-button>
+
   </form>
 
   <form *ngIf="showForm" [formGroup]="informationForm" (ngSubmit)="onSubmit()">
@@ -306,10 +311,13 @@
     </mat-form-field>
 
     <div class="buttonContainer">
-      <button mat-button type="submit" [disabled]="informationForm.invalid">
-        {{ t.button.save }}
-      </button>
-      <small *ngIf="errorMessage" class="message">{{ errorMessage }}</small>
+
+      <app-button
+      [disabled]="informationForm.invalid"
+      [buttonText]="t.button.save "
+      [message]="errorMessage"
+      [type]="'submit'"
+    ></app-button>
     </div>
   </form>
 </div>
