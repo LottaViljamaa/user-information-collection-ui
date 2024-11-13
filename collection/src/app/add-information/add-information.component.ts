@@ -12,8 +12,6 @@ import {
 import { CommonModule } from "@angular/common";
 import { t } from "../shared/texts.js";
 import { environment } from "../../environments/environment.development.js";
-import { MatInputModule } from "@angular/material/input";
-import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSelectModule } from "@angular/material/select";
 import { ButtonComponent } from "../shared/button/button.component.js";
 import { InputComponent } from "../shared/input/input.component.js";
@@ -25,8 +23,6 @@ import { InputComponent } from "../shared/input/input.component.js";
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
     MatSelectModule,
     ButtonComponent,
     InputComponent,

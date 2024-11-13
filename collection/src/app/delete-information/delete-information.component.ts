@@ -5,8 +5,6 @@ import { catchError } from "rxjs/operators";
 import { of } from "rxjs";
 import { t } from "../shared/texts";
 import { environment } from "../../environments/environment.development";
-import { MatInputModule } from "@angular/material/input";
-import { MatFormFieldModule } from "@angular/material/form-field";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { ButtonComponent } from "../shared/button/button.component";
@@ -19,8 +17,6 @@ import { InputComponent } from "../shared/input/input.component";
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
     ButtonComponent,
     InputComponent,
   ],

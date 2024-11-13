@@ -12,7 +12,6 @@ import { CommonModule } from "@angular/common";
 import { t } from "../shared/texts";
 import { environment } from "../../environments/environment.development";
 import { MatTableModule } from "@angular/material/table";
-import { MatInputModule } from "@angular/material/input";
 import { ButtonComponent } from "../shared/button/button.component.js";
 import { InputComponent } from "../shared/input/input.component";
 
@@ -22,7 +21,6 @@ import { InputComponent } from "../shared/input/input.component";
   imports: [
     ReactiveFormsModule,
     CommonModule,
-    MatInputModule,
     ButtonComponent,
     MatTableModule,
     InputComponent,
