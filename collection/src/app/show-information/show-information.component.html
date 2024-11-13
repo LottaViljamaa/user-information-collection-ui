@@ -3,31 +3,25 @@
 
   <form [formGroup]="showInfoForm" (ngSubmit)="onSearch()">
     <h2>{{ t.headers.additionalHeaders.showInformation }}</h2>
-    <mat-form-field class="inputField" appearance="fill">
-      <mat-label>{{ t.userInformation.personalIdentityCode }}</mat-label>
-      <input matInput formControlName="personalIdentityCode" type="text" />
-      <mat-error *ngIf="showInfoForm.get('personalIdentityCode')?.touched">
-        <ng-container
-          *ngIf="showInfoForm.get('personalIdentityCode')?.errors?.['required']"
-        >
-          {{ t.userInformation.personalIdentityCode }}
-          {{ t.errorMessages.mandatory }}
-        </ng-container>
-        <ng-container
-          *ngIf="showInfoForm.get('personalIdentityCode')?.errors?.['pattern']"
-        >
-          {{ t.userInformation.personalIdentityCode }}
-          {{ t.errorMessages.identityCodeForm }}
-        </ng-container>
-      </mat-error>
-    </mat-form-field>
+    
+    <div class="input">
+      <app-input
+        [label]="t.userInformation.personalIdentityCode"
+        [control]="$any(showInfoForm.get('personalIdentityCode'))"
+        [errorMessageRequired]="t.userInformation.personalIdentityCode + t.errorMessages.mandatory"
+        [errorMessagePattern]="t.userInformation.personalIdentityCode + t.errorMessages.identityCodeForm"
+        [type]="'text'"
+    ></app-input>
+    </div>
 
+    <div class="button">
     <app-button
       [disabled]="showInfoForm.invalid"
       [buttonText]="t.button.search "
       [message]="errorMessage"
       [type]="'submit'"
     ></app-button>
+    </div>
 
     <div *ngIf="user" class="mat-elevation-z8">
       <table mat-table [dataSource]="userData" class="mat-table">

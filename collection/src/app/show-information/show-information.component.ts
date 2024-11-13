@@ -11,9 +11,10 @@ import {
 import { CommonModule } from "@angular/common";
 import { t } from "../shared/texts";
 import { environment } from "../../environments/environment.development";
+import { MatTableModule } from "@angular/material/table";
 import { MatInputModule } from "@angular/material/input";
 import { ButtonComponent } from "../shared/button/button.component.js";
-import { MatTableModule } from "@angular/material/table";
+import { InputComponent } from "../shared/input/input.component";
 
 @Component({
   selector: "app-show-information",
@@ -24,6 +25,7 @@ import { MatTableModule } from "@angular/material/table";
     MatInputModule,
     ButtonComponent,
     MatTableModule,
+    InputComponent,
   ],
   templateUrl: "./show-information.component.html",
   styleUrls: ["../app.component.css"],
