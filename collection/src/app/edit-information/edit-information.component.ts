@@ -15,6 +15,8 @@ import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSelectModule } from "@angular/material/select";
 import { ButtonComponent } from "../shared/button/button.component.js";
+import { InputComponent } from "../shared/input/input.component.js";
+
 @Component({
   selector: "app-edit-information",
   standalone: true,
@@ -26,6 +28,7 @@ import { ButtonComponent } from "../shared/button/button.component.js";
     MatFormFieldModule,
     MatSelectModule,
     ButtonComponent,
+    InputComponent,
   ],
   templateUrl: "./edit-information.component.html",
   styleUrl: "../app.component.css",
