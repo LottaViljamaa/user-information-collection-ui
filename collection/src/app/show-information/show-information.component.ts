@@ -9,7 +9,7 @@ import {
   Validators,
 } from "@angular/forms";
 import { CommonModule } from "@angular/common";
-import { t } from "../texts";
+import { t } from "../shared/texts";
 import { environment } from "../../environments/environment.development";
 import { MatInputModule } from "@angular/material/input";
 import { ButtonComponent } from "../shared/button/button.component.js";

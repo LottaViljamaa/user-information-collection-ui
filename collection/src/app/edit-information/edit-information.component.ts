@@ -9,7 +9,7 @@ import {
   ReactiveFormsModule,
 } from "@angular/forms";
 import { catchError, of } from "rxjs";
-import { t } from "../texts.js";
+import { t } from "../shared/texts.js";
 import { environment } from "../../environments/environment.development.js";
 import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field";

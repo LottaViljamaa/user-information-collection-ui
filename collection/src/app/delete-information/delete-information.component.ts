@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { catchError } from "rxjs/operators";
 import { of } from "rxjs";
-import { t } from "../texts";
+import { t } from "../shared/texts";
 import { environment } from "../../environments/environment.development";
 import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field";
