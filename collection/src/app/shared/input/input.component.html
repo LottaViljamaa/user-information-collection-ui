@@ -1,0 +1,17 @@
+<mat-form-field class="inputField">
+    <mat-label>{{ label }}</mat-label>
+    <input
+      matInput
+      [formControl]="control"
+      [type]="type"
+    />
+    <mat-error *ngIf="control.invalid && (control.dirty || control.touched)">
+      <ng-container *ngIf="control.errors?.['required']">
+        {{ errorMessageRequired }}
+      </ng-container>
+      <ng-container *ngIf="control.errors?.['pattern']">
+        {{ errorMessagePattern }}
+      </ng-container>
+    </mat-error>
+</mat-form-field>
+  

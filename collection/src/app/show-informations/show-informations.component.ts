@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { catchError, of } from "rxjs";
 import { CommonModule } from "@angular/common";
-import { t } from "../texts.js";
+import { t } from "../shared/texts.js";
 import { environment } from "../../environments/environment.development.js";
 
 @Component({

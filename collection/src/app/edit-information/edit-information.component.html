@@ -3,321 +3,134 @@
 
   <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
     <h2>{{ t.headers.additionalHeaders.editInformation }}</h2>
-    <mat-form-field class="inputField">
-      <mat-label for="personalIdentityCode">{{
-        t.userInformation.personalIdentityCode
-      }}</mat-label>
-      <input
-        id="personalIdentityCode"
-        matInput
-        formControlName="personalIdentityCode"
-        type="text"
-      />
-      <mat-error
-        *ngIf="
-          searchForm.get('personalIdentityCode')?.invalid &&
-          (searchForm.get('personalIdentityCode')?.dirty ||
-            searchForm.get('personalIdentityCode')?.touched)
-        "
-      >
-        <ng-container
-          *ngIf="searchForm.get('personalIdentityCode')?.errors?.['required']"
-        >
-          {{ t.userInformation.personalIdentityCode }}
-          {{ t.errorMessages.mandatory }}
-        </ng-container>
-        <ng-container
-          *ngIf="searchForm.get('personalIdentityCode')?.errors?.['pattern']"
-        >
-          {{ t.userInformation.personalIdentityCode }}
-          {{ t.errorMessages.identityCodeForm }}
-        </ng-container>
-      </mat-error>
-    </mat-form-field>
-
-    <app-button
-      [disabled]="searchForm.invalid"
-      [buttonText]="t.button.search "
-      [message]="errorMessage"
-      [type]="'submit'"
-    ></app-button>
-
+    <div class="input">
+      <app-input
+        [label]="t.userInformation.personalIdentityCode"
+        [control]="$any(searchForm.get('personalIdentityCode'))"
+        [errorMessageRequired]="t.userInformation.personalIdentityCode + t.errorMessages.mandatory"
+        [errorMessagePattern]="t.userInformation.personalIdentityCode + t.errorMessages.identityCodeForm"
+        [type]="'text'"
+    ></app-input>
+    </div>
+    
+    <div class="button">
+        <app-button
+          [disabled]="searchForm.invalid"
+          [buttonText]="t.button.search "
+          [message]="errorMessage"
+          [type]="'submit'"
+        ></app-button>
+    </div>
   </form>
 
   <form *ngIf="showForm" [formGroup]="informationForm" (ngSubmit)="onSubmit()">
-    <mat-form-field class="inputField">
-      <mat-label for="firstName">{{ t.userInformation.firstName }}</mat-label>
-      <input id="firstName" matInput formControlName="firstName" type="text" />
-      <mat-error
-        *ngIf="
-          informationForm.get('firstName')?.invalid &&
-          (informationForm.get('firstName')?.dirty ||
-            informationForm.get('firstName')?.touched)
-        "
-      >
-        <ng-container
-          *ngIf="informationForm.get('firstName')?.errors?.['required']"
-        >
-          {{ t.userInformation.firstName }}{{ t.errorMessages.mandatory }}
-        </ng-container>
-        <ng-container
-          *ngIf="informationForm.get('firstName')?.errors?.['pattern']"
-        >
-          {{ t.userInformation.firstName }}{{ t.errorMessages.nameForm }}
-        </ng-container>
-      </mat-error>
-    </mat-form-field>
+    <div class="input">
+      <app-input
+      [label]="t.userInformation.firstName"
+      [control]="$any(informationForm.get('firstName'))"
+      [errorMessageRequired]="t.userInformation.firstName + t.errorMessages.mandatory"
+      [errorMessagePattern]="t.userInformation.firstName + t.errorMessages.nameForm"
+      [type]="'text'"
+    ></app-input>
 
-    <mat-form-field class="inputField">
-      <mat-label for="lastName">{{ t.userInformation.lastName }}</mat-label>
-      <input id="lastName" matInput formControlName="lastName" type="text" />
-      <mat-error
-        *ngIf="
-          informationForm.get('lastName')?.invalid &&
-          (informationForm.get('lastName')?.dirty ||
-            informationForm.get('lastName')?.touched)
-        "
-      >
-        <ng-container
-          *ngIf="informationForm.get('lastName')?.errors?.['required']"
-        >
-          {{ t.userInformation.lastName }}{{ t.errorMessages.mandatory }}
-        </ng-container>
-        <ng-container
-          *ngIf="informationForm.get('lastName')?.errors?.['pattern']"
-        >
-          {{ t.userInformation.lastName }}{{ t.errorMessages.nameForm }}
-        </ng-container>
-      </mat-error>
-    </mat-form-field>
+    <app-input
+      [label]="t.userInformation.lastName"
+      [control]="$any(informationForm.get('lastName'))"
+      [errorMessageRequired]="t.userInformation.lastName +t.errorMessages.mandatory"
+      [errorMessagePattern]="t.userInformation.lastName +t.errorMessages.nameForm"
+      [type]="'text'"
+    ></app-input>
 
-    <mat-form-field class="inputField">
-      <mat-label for="personalIdentityCode">{{
-        t.userInformation.personalIdentityCode
-      }}</mat-label>
-      <input
-        id="personalIdentityCode"
-        matInput
-        formControlName="personalIdentityCode"
-        type="text"
-      />
-      <mat-error
-        *ngIf="
-          informationForm.get('personalIdentityCode')?.invalid &&
-          (informationForm.get('personalIdentityCode')?.dirty ||
-            informationForm.get('personalIdentityCode')?.touched)
-        "
-      >
-        <ng-container
+    <app-input
+      [label]="t.userInformation.personalIdentityCode"
+      [control]="$any(informationForm.get('personalIdentityCode'))"
+      [errorMessageRequired]="t.userInformation.personalIdentityCode +t.errorMessages.mandatory"
+      [errorMessagePattern]="t.userInformation.personalIdentityCode +t.errorMessages.identityCodeForm"
+      [type]="'text'"
+    ></app-input>
+
+    <app-input
+      [label]="t.userInformation.citizenship"
+      [control]="$any(informationForm.get('citizenship'))"
+      [errorMessageRequired]="t.userInformation.citizenship +t.errorMessages.mandatory"
+      [errorMessagePattern]="t.userInformation.citizenship +t.errorMessages.lettersOnly"
+      [type]="'text'"
+    ></app-input>  
+
+      <mat-form-field class="inputField">
+        <mat-label for="gender">{{ t.userInformation.gender }}</mat-label>
+        <mat-select id="gender" formControlName="gender">
+          <mat-option value="" disabled selected>{{
+            t.headers.additionalHeaders.chooseGender
+          }}</mat-option>
+          <mat-option value="nainen">{{
+            t.userInformation.genderWoman
+          }}</mat-option>
+          <mat-option value="mies">{{ t.userInformation.genderMan }}</mat-option>
+          <mat-option value="muu">{{ t.userInformation.genderOther }}</mat-option>
+        </mat-select>
+        <mat-error
           *ngIf="
-            informationForm.get('personalIdentityCode')?.errors?.['required']
+            informationForm.get('gender')?.invalid &&
+            (informationForm.get('gender')?.dirty ||
+              informationForm.get('gender')?.touched)
           "
         >
-          {{ t.userInformation.personalIdentityCode
-          }}{{ t.errorMessages.mandatory }}
-        </ng-container>
-        <ng-container
-          *ngIf="
-            informationForm.get('personalIdentityCode')?.errors?.['pattern']
-          "
-        >
-          {{ t.userInformation.personalIdentityCode
-          }}{{ t.errorMessages.identityCodeForm }}
-        </ng-container>
-      </mat-error>
-    </mat-form-field>
+          <ng-container
+            *ngIf="informationForm.get('gender')?.errors?.['required']"
+          >
+            {{ t.userInformation.gender }}{{ t.errorMessages.mandatory }}
+          </ng-container>
+        </mat-error>
+      </mat-form-field>
 
-    <mat-form-field class="inputField">
-      <mat-label for="citizenship">{{
-        t.userInformation.citizenship
-      }}</mat-label>
-      <input
-        id="citizenship"
-        matInput
-        formControlName="citizenship"
-        type="text"
-      />
-      <mat-error
-        *ngIf="
-          informationForm.get('citizenship')?.invalid &&
-          (informationForm.get('citizenship')?.dirty ||
-            informationForm.get('citizenship')?.touched)
-        "
-      >
-        <ng-container
-          *ngIf="informationForm.get('citizenship')?.errors?.['required']"
-        >
-          {{ t.userInformation.citizenship }}{{ t.errorMessages.mandatory }}
-        </ng-container>
-        <ng-container
-          *ngIf="informationForm.get('citizenship')?.errors?.['pattern']"
-        >
-          {{ t.userInformation.citizenship }}{{ t.errorMessages.lettersOnly }}
-        </ng-container>
-      </mat-error>
-    </mat-form-field>
+      <app-input
+      [label]="t.userInformation.email"
+      [control]="$any(informationForm.get('email'))"
+      [errorMessageRequired]="t.userInformation.email +t.errorMessages.mandatory"
+      [errorMessagePattern]="t.userInformation.email +t.errorMessages.emailForm"
+      [type]="'email'"
+    ></app-input>
 
-    <mat-form-field class="inputField">
-      <mat-label for="gender">{{ t.userInformation.gender }}</mat-label>
-      <mat-select id="gender" formControlName="gender">
-        <mat-option value="" disabled selected>{{
-          t.headers.additionalHeaders.chooseGender
-        }}</mat-option>
-        <mat-option value="nainen">{{
-          t.userInformation.genderWoman
-        }}</mat-option>
-        <mat-option value="mies">{{ t.userInformation.genderMan }}</mat-option>
-        <mat-option value="muu">{{ t.userInformation.genderOther }}</mat-option>
-      </mat-select>
-      <mat-error
-        *ngIf="
-          informationForm.get('gender')?.invalid &&
-          (informationForm.get('gender')?.dirty ||
-            informationForm.get('gender')?.touched)
-        "
-      >
-        <ng-container
-          *ngIf="informationForm.get('gender')?.errors?.['required']"
-        >
-          {{ t.userInformation.gender }}{{ t.errorMessages.mandatory }}
-        </ng-container>
-      </mat-error>
-    </mat-form-field>
+    <app-input
+      [label]="t.userInformation.phoneNumber"
+      [control]="$any(informationForm.get('phoneNumber'))"
+      [errorMessageRequired]="t.userInformation.phoneNumber +t.errorMessages.mandatory"
+      [errorMessagePattern]="t.userInformation.phoneNumber +t.errorMessages.phoneNumberForm"
+      [type]="'text'"
+    ></app-input>
 
-    <mat-form-field class="inputField">
-      <mat-label for="email">{{ t.userInformation.email }}</mat-label>
-      <input id="email" matInput formControlName="email" type="email" />
-      <mat-error
-        *ngIf="
-          informationForm.get('email')?.invalid &&
-          (informationForm.get('email')?.dirty ||
-            informationForm.get('email')?.touched)
-        "
-      >
-        <ng-container
-          *ngIf="informationForm.get('email')?.errors?.['required']"
-        >
-          {{ t.userInformation.email }}{{ t.errorMessages.mandatory }}
-        </ng-container>
-        <ng-container *ngIf="informationForm.get('email')?.errors?.['email']">
-          {{ t.userInformation.email }}{{ t.errorMessages.emailForm }}
-        </ng-container>
-      </mat-error>
-    </mat-form-field>
+    <app-input
+      [label]="t.userInformation.streetAddress"
+      [control]="$any(informationForm.get('streetAddress'))"
+      [errorMessageRequired]="t.userInformation.streetAddress +t.errorMessages.mandatory"
+      [type]="'text'"
+    ></app-input>
 
-    <mat-form-field class="inputField">
-      <mat-label for="phoneNumber">{{
-        t.userInformation.phoneNumber
-      }}</mat-label>
-      <input
-        id="phoneNumber"
-        matInput
-        formControlName="phoneNumber"
-        type="text"
-      />
-      <mat-error
-        *ngIf="
-          informationForm.get('phoneNumber')?.invalid &&
-          (informationForm.get('phoneNumber')?.dirty ||
-            informationForm.get('phoneNumber')?.touched)
-        "
-      >
-        <ng-container
-          *ngIf="informationForm.get('phoneNumber')?.errors?.['required']"
-        >
-          {{ t.userInformation.phoneNumber }}{{ t.errorMessages.mandatory }}
-        </ng-container>
-        <ng-container
-          *ngIf="informationForm.get('phoneNumber')?.errors?.['pattern']"
-        >
-          {{ t.userInformation.phoneNumber
-          }}{{ t.errorMessages.phoneNumberForm }}
-        </ng-container>
-        <ng-container
-          *ngIf="informationForm.get('phoneNumber')?.errors?.['maxlength']"
-        >
-          {{ t.userInformation.phoneNumber }}{{ t.errorMessages.inputTooLong }}
-        </ng-container>
-      </mat-error>
-    </mat-form-field>
+    <app-input
+      [label]="t.userInformation.city"
+      [control]="$any(informationForm.get('city'))"
+      [errorMessageRequired]="t.userInformation.city +t.errorMessages.mandatory"
+      [errorMessagePattern]="t.userInformation.city +t.errorMessages.lettersOnly"
+      [type]="'text'"
+    ></app-input>
 
-    <mat-form-field class="inputField">
-      <mat-label for="streetAddress">{{
-        t.userInformation.streetAddress
-      }}</mat-label>
-      <input
-        id="streetAddress"
-        matInput
-        formControlName="streetAddress"
-        type="text"
-      />
-      <mat-error
-        *ngIf="
-          informationForm.get('streetAddress')?.invalid &&
-          (informationForm.get('streetAddress')?.dirty ||
-            informationForm.get('streetAddress')?.touched)
-        "
-      >
-        <ng-container
-          *ngIf="informationForm.get('streetAddress')?.errors?.['required']"
-        >
-          {{ t.userInformation.streetAddress }}{{ t.errorMessages.mandatory }}
-        </ng-container>
-      </mat-error>
-    </mat-form-field>
+    <app-input
+      [label]="t.userInformation.postalCode"
+      [control]="$any(informationForm.get('postalCode'))"
+      [errorMessageRequired]="t.userInformation.postalCode +t.errorMessages.mandatory"
+      [errorMessagePattern]="t.userInformation.postalCode +t.errorMessages.inputLength"
+      [type]="'text'"
+    ></app-input>
+  </div>
 
-    <mat-form-field class="inputField">
-      <mat-label for="city">{{ t.userInformation.city }}</mat-label>
-      <input id="city" matInput formControlName="city" type="text" />
-      <mat-error
-        *ngIf="
-          informationForm.get('city')?.invalid &&
-          (informationForm.get('city')?.dirty ||
-            informationForm.get('city')?.touched)
-        "
-      >
-        <ng-container *ngIf="informationForm.get('city')?.errors?.['required']">
-          {{ t.userInformation.city }}{{ t.errorMessages.mandatory }}
-        </ng-container>
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field class="inputField">
-      <mat-label for="postalCode">{{ t.userInformation.postalCode }}</mat-label>
-      <input
-        id="postalCode"
-        matInput
-        formControlName="postalCode"
-        type="text"
-      />
-      <mat-error
-        *ngIf="
-          informationForm.get('postalCode')?.invalid &&
-          (informationForm.get('postalCode')?.dirty ||
-            informationForm.get('postalCode')?.touched)
-        "
-      >
-        <ng-container
-          *ngIf="informationForm.get('postalCode')?.errors?.['required']"
-        >
-          {{ t.userInformation.postalCode }}{{ t.errorMessages.mandatory }}
-        </ng-container>
-        <ng-container
-          *ngIf="informationForm.get('postalCode')?.errors?.['pattern']"
-        >
-          {{ t.userInformation.postalCode }}{{ t.errorMessages.inputLength }}
-        </ng-container>
-      </mat-error>
-    </mat-form-field>
-
-    <div class="buttonContainer">
-
-      <app-button
+  <div class="button">
+    <app-button
       [disabled]="informationForm.invalid"
       [buttonText]="t.button.save "
       [message]="errorMessage"
       [type]="'submit'"
     ></app-button>
-    </div>
+  </div>
   </form>
 </div>

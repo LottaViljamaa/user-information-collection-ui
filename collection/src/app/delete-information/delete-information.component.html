@@ -3,48 +3,23 @@
 
   <form [formGroup]="deleteForm" (ngSubmit)="onDelete()">
     <h2>{{ t.headers.additionalHeaders.deleteInformation }}</h2>
+    <div class="input">
+      <app-input
+        [label]="t.userInformation.personalIdentityCode"
+        [control]="$any(deleteForm.get('personalIdentityCode'))"
+        [errorMessageRequired]="t.userInformation.personalIdentityCode + t.errorMessages.mandatory"
+        [errorMessagePattern]="t.userInformation.personalIdentityCode + t.errorMessages.identityCodeForm"
+        [type]="'text'"
+    ></app-input>
+    </div>
 
-    <mat-form-field class="inputField" appearance="fill">
-      <mat-label>{{ t.userInformation.personalIdentityCode }}</mat-label>
-
-      <input
-        matInput
-        formControlName="personalIdentityCodeToDelete"
-        type="text"
-        required
-        (input)="
-          deleteForm.get('personalIdentityCodeToDelete')?.markAsTouched()
-        "
-      />
-
-      <mat-error
-        *ngIf="deleteForm.get('personalIdentityCodeToDelete')?.touched"
-      >
-        <ng-container
-          *ngIf="
-            deleteForm.get('personalIdentityCodeToDelete')?.errors?.['required']
-          "
-        >
-          {{ t.userInformation.personalIdentityCode }}
-          {{ t.errorMessages.mandatory }}
-        </ng-container>
-        <ng-container
-          *ngIf="
-            deleteForm.get('personalIdentityCodeToDelete')?.errors?.['pattern']
-          "
-        >
-          {{ t.userInformation.personalIdentityCode }}
-          {{ t.errorMessages.identityCodeForm }}
-        </ng-container>
-      </mat-error>
-    </mat-form-field>
-
-    <app-button
-      [disabled]="deleteForm.invalid"
-      [buttonText]="t.button.delete"
-      [message]="message"
-      [type]="'submit'"
-    ></app-button>
-
+    <div class="button">
+      <app-button
+        [disabled]="deleteForm.invalid"
+        [buttonText]="t.button.delete"
+        [message]="message"
+        [type]="'submit'"
+      ></app-button>
+    </div>
   </form>
 </div>

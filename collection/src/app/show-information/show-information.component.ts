@@ -9,11 +9,11 @@ import {
   Validators,
 } from "@angular/forms";
 import { CommonModule } from "@angular/common";
-import { t } from "../texts";
+import { t } from "../shared/texts";
 import { environment } from "../../environments/environment.development";
-import { MatInputModule } from "@angular/material/input";
-import { ButtonComponent } from "../shared/button/button.component.js";
 import { MatTableModule } from "@angular/material/table";
+import { ButtonComponent } from "../shared/button/button.component.js";
+import { InputComponent } from "../shared/input/input.component";
 
 @Component({
   selector: "app-show-information",
@@ -21,9 +21,9 @@ import { MatTableModule } from "@angular/material/table";
   imports: [
     ReactiveFormsModule,
     CommonModule,
-    MatInputModule,
     ButtonComponent,
     MatTableModule,
+    InputComponent,
   ],
   templateUrl: "./show-information.component.html",
   styleUrls: ["../app.component.css"],
