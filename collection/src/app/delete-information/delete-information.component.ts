@@ -10,6 +10,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { ButtonComponent } from "../shared/button/button.component";
+import { InputComponent } from "../shared/input/input.component";
 
 @Component({
   selector: "app-delete-information",
@@ -21,6 +22,7 @@ import { ButtonComponent } from "../shared/button/button.component";
     MatFormFieldModule,
     MatInputModule,
     ButtonComponent,
+    InputComponent,
   ],
   templateUrl: "./delete-information.component.html",
   styleUrls: ["../app.component.css"],
@@ -35,7 +37,7 @@ export class DeleteInformationComponent {
     private fb: FormBuilder,
   ) {
     this.deleteForm = this.fb.group({
-      personalIdentityCodeToDelete: [
+      personalIdentityCode: [
         "",
         [Validators.required, Validators.pattern("^\\d{6}")],
       ],
@@ -44,13 +46,13 @@ export class DeleteInformationComponent {
 
   onDelete() {
     this.message = "";
-    const personalIdentityCodeToDelete = this.deleteForm.get(
-      "personalIdentityCodeToDelete",
+    const personalIdentityCode = this.deleteForm.get(
+      "personalIdentityCode",
     )?.value;
 
     if (this.deleteForm.valid) {
       this.http
-        .get(`${environment.baseUrl}/get/${personalIdentityCodeToDelete}`)
+        .get(`${environment.baseUrl}/get/${personalIdentityCode}`)
         .pipe(
           catchError((err) => {
             if (err.status === 404) {
@@ -64,14 +66,12 @@ export class DeleteInformationComponent {
         .subscribe((data: any) => {
           if (data) {
             const confirmDelete = confirm(
-              `${t.confirmationMessage.delete.replace("{id}", personalIdentityCodeToDelete)}`,
+              `${t.confirmationMessage.delete.replace("{id}", personalIdentityCode)}`,
             );
 
             if (confirmDelete) {
               this.http
-                .delete(
-                  `${environment.baseUrl}/delete/${personalIdentityCodeToDelete}`,
-                )
+                .delete(`${environment.baseUrl}/delete/${personalIdentityCode}`)
                 .pipe(
                   catchError((err) => {
                     this.message = `${t.errorMessages.deleteError}`;
@@ -80,7 +80,7 @@ export class DeleteInformationComponent {
                 )
                 .subscribe(() => {
                   alert(
-                    `${t.successMessages.deleteSuccess.replace("{id}", personalIdentityCodeToDelete)}`,
+                    `${t.successMessages.deleteSuccess.replace("{id}", personalIdentityCode)}`,
                   );
                   this.deleteForm.reset();
                 });
@@ -95,6 +95,6 @@ export class DeleteInformationComponent {
   }
 
   isIdentityCodeValid() {
-    return this.deleteForm.get("personalIdentityCodeToDelete")?.valid;
+    return this.deleteForm.get("personalIdentityCode")?.valid;
   }
 }
