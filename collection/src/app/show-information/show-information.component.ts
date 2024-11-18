@@ -56,6 +56,7 @@ export class ShowInformationComponent {
   onSearch() {
     this.user = null;
     this.errorMessage = "";
+    this.userData = [];
 
     if (this.showInfoForm.valid) {
       this.personalIdentityCode = this.showInfoForm.value.personalIdentityCode;
