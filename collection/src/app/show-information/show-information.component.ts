@@ -11,10 +11,9 @@ import {
 import { CommonModule } from "@angular/common";
 import { t } from "../shared/texts";
 import { environment } from "../../environments/environment.development";
-import { MatTableModule } from "@angular/material/table";
 import { ButtonComponent } from "../shared/button/button.component.js";
 import { InputComponent } from "../shared/input/input.component";
-
+import { PersonTableComponent } from "../shared/person-table/person-table.component";
 @Component({
   selector: "app-show-information",
   standalone: true,
@@ -22,8 +21,8 @@ import { InputComponent } from "../shared/input/input.component";
     ReactiveFormsModule,
     CommonModule,
     ButtonComponent,
-    MatTableModule,
     InputComponent,
+    PersonTableComponent,
   ],
   templateUrl: "./show-information.component.html",
   styleUrls: ["../app.component.css"],
@@ -88,8 +87,6 @@ export class ShowInformationComponent {
   }
 
   setUserData() {
-    this.userData = [];
-
     this.userData = [
       {
         label: t.userInformation.firstName,
