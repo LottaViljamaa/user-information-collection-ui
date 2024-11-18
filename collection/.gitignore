@@ -43,3 +43,8 @@ Thumbs.db
 
 .nx/cache
 .nx/workspace-data
+
+# Robot Framework -testien luomat tiedostot
+log.html
+output.xml
+report.html
